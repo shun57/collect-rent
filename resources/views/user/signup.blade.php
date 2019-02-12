@@ -1,7 +1,8 @@
 @extends('layouts.master_auth')
  
 @section('content')
-  <div class="row">
+  <div class="row" style="margin-top: 80px;">
+    <h1 style="text-align: center;">サインアップ</h1>
   <form action="{{ route('user.signup') }}" method="post" class="form-horizontal" style="margin-top: 50px;">
   <div class="form-group">
   <label class="col-sm-3 control-label" for="InputName">名前</label>

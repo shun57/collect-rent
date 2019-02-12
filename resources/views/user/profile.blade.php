@@ -1,9 +1,8 @@
 @extends('layouts.master_auth')
  
 @section('content')
-  <h3>マイページ</h3>
-  
-  <div style="margin-top: 30px;">
+  <div style="margin-top: 80px;">
+      <h3>マイページ</h3>
       <table class="table table-striped">
           <tr>
               <th>名前</th>
