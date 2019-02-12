@@ -10,8 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'user'], function(){
 
+Route::get('/',function(){
+   return view('user.signin');
+});
+
+Route::group(['prefix' => 'user'], function(){
+    Route::group(['middleware' => 'guest'], function(){
+    //登録
     Route::get('/signup', [
         'uses' => 'UserController@getSignup',
         'as' => 'user.signup'
@@ -21,12 +27,8 @@ Route::group(['prefix' => 'user'], function(){
         'uses' => 'UserController@postSignup',
         'as' => 'user.signup'
         ]);
-        
-    Route::get('/profile',[
-        'uses' => 'UserController@getProfile',
-        'as' => 'user.profile'
-        ]);
-        
+    
+    //ログイン
     Route::get('/signin',[
         'uses' => 'UserController@getSignin',
         'as' => 'user.signin'
@@ -36,6 +38,20 @@ Route::group(['prefix' => 'user'], function(){
         'uses' => 'UserController@postSignin',
         'as' => 'user.signin'
         ]);
+    });
+    
+    Route::group(['middleware' => 'auth'],function(){
+    //ユーザープロフィール
+    Route::get('/profile',[
+        'uses' => 'UserController@getProfile',
+        'as' => 'user.profile'
+        ]);
+    //ログアウト
+    Route::get('/logout',[
+        'uses' => 'UserController@getLogout',
+        'as' => 'user.logout'
+        ]);
+    });
 
 });
 

@@ -10,13 +10,16 @@
   </button>
   <a class="navbar-brand" href="#">認証デモ</a>
   </div>
- 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  <ul class="nav navbar-nav navbar-right">
-  <li><a href="{{route('user.signup')}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> 新規登録</a></li>
-  <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> ログイン</a></li>
-  </ul>
-  </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+<ul>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav navbar-right">
+@if(Auth::check())
+  <li><a href="{{route('user.logout')}}">ログアウト</a></li>
+@else
+  <li><a href="{{route('user.signup')}}"><i aria-hidden="true"></i>新規登録</a></li>
+  <li><a href="{{route('user.signin')}}"><i aria-hidden="true"></i>ログイン</a></li>
+@endif
+</ul>
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
 </nav>
