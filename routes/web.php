@@ -16,6 +16,10 @@ Route::get('/',function(){
 });
 
 Route::group(['prefix' => 'user'], function(){
+    
+    Route::get('/{id}/lends','LendController@index')->name('lends.index');
+    
+    
     Route::group(['middleware' => 'guest'], function(){
     //登録
     Route::get('/signup', [
