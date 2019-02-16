@@ -63,12 +63,13 @@ class Lend extends Model
     
     public function getFormattedCreatedAtAttribute()
     {
-        $created_at= $this->attributes['created_at'];
+        $created_at = $this->attributes['created_at'];
         
-         if (!isset(self::INTERVAL[$created_at])) {
+        if (!isset($created_at)) {
         return '';
     }
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['created-at'])
-            ->format('Y/m/d');
-    }
+
+         return Carbon::createFromFormat('Y-m-d H:i:s', $created_at)
+             ->format('Y/m/d');
+     }
 }

@@ -17,9 +17,6 @@ Route::get('/',function(){
 
 Route::group(['prefix' => 'user'], function(){
     
-    Route::get('/{id}/lends','LendController@index')->name('lends.index');
-    
-    
     Route::group(['middleware' => 'guest'], function(){
     //登録
     Route::get('/signup', [
@@ -42,6 +39,7 @@ Route::group(['prefix' => 'user'], function(){
         'uses' => 'UserController@postSignin',
         'as' => 'user.signin'
         ]);
+ 
     });
     
     Route::group(['middleware' => 'auth'],function(){
@@ -55,8 +53,15 @@ Route::group(['prefix' => 'user'], function(){
         'uses' => 'UserController@getLogout',
         'as' => 'user.logout'
         ]);
+        
+     //貸し情報登録
+    Route::get('/{id}/lends/create','LendController@showCreateForm')->name('lends.create');
+    
+    Route::post('/{id}/lends/create','LendController@create');
+   
+        //貸し情報一覧
+    Route::get('/{id}/lends','LendController@index')->name('lends.index');
     });
-
 });
 
 

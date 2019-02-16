@@ -15,6 +15,7 @@
 <ul class="nav navbar-nav navbar-right">
 @if(Auth::check())
   <li><a href="{{route('user.logout')}}">ログアウト</a></li>
+  <li><a href="{{route('lends.create',['id' => Auth::user()->id])}}">取り立てる</a></li>
 @else
   <li><a href="{{route('user.signup')}}"><i aria-hidden="true"></i>新規登録</a></li>
   <li><a href="{{route('user.signin')}}"><i aria-hidden="true"></i>ログイン</a></li>
