@@ -26,7 +26,20 @@
               </div>
               <div class="form-group">
                 <label for="lending_money">貸した額</label>
-                <input type="number" min="1" value="0" class="form-control" name="lending_money" id="lending_money" value="{{ old('lending_money') }}" />
+                <input type="number" min="1" value="1" class="form-control" name="lending_money" id="lending_money" value="{{ old('lending_money') }}" />
+              </div>
+              <div class="form-group">
+                <label for="interval">請求頻度</label>
+                <select name="interval" id="interval" class="form-control">
+                  @foreach(\App\Lend::INTERVAL as $key => $val)
+                    <option
+                        value="{{ $key }}"
+                        {{ $key == old('interval') ? 'selected' : '' }}
+                    >
+                      {{ $val['interval-label'] }}
+                    </option>
+                  @endforeach
+                </select>
               </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary">取り立て！</button>

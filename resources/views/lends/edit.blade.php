@@ -41,19 +41,6 @@
                   @endforeach
                 </select>
               </div>
-              <div class="form-group">
-                <label for="interval">請求頻度</label>
-                <select name="interval" id="interval" class="form-control">
-                  @foreach(\App\Lend::INTERVAL as $key => $val)
-                    <option
-                        value="{{ $key }}"
-                        {{ $key == old('interval', $lend->interval) ? 'selected' : '' }}
-                    >
-                      {{ $val['interval-label'] }}
-                    </option>
-                  @endforeach
-                </select>
-              </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary">更新する</button>
               </div>

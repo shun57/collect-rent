@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\CreateLend;
+use Mail;
+use Auth;
 use App\User;
 use App\Lend;
-use Auth;
+use Illuminate\Http\Request;
+use App\Http\Requests\CreateLend;
+use App\Mail\IntervalMail;
 
 class LendController extends Controller
 {
@@ -39,8 +41,11 @@ class LendController extends Controller
         $lend->name = $request->name;
         $lend->email = $request->email;
         $lend->lending_money = $request->lending_money;
+        $lend->interval = $request->interval;
         
         $current_user->lends()->save($lend);
+        
+        //Mail::to($lend->email)->send(new IntervalMail($current_user,$lend->name,$))
         
         return redirect()->route('lends.index',[
             'id' => $current_user->id,
@@ -63,7 +68,6 @@ class LendController extends Controller
         'email' => 'email|required',
         'lending_money' => 'integer|required',
         'status' => 'required|in:1,2',
-        'interval' => 'required|in:1,2',
         ]);
         
         $lend = Lend::find($lend_id);
@@ -72,7 +76,6 @@ class LendController extends Controller
         $lend->email = $request->email;
         $lend->lending_money = $request->lending_money;
         $lend->status = $request->status;
-        $lend->interval = $request->interval;
         
         $lend->save();
         
