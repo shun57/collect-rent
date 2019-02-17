@@ -8,7 +8,7 @@
   <span class="icon-bar"></span>
   <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand" href="#">少額取り立て屋</a>
+  <a class="navbar-brand">少額取り立て屋</a>
   </div>
 <ul>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
