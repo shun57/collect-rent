@@ -7,6 +7,11 @@ use Carbon\Carbon;
 
 class Lend extends Model
 {
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
     const STATUS = [
          1 => [ 'status-label' => '未回収', 'class' => 'label-danger' ],
          2 => [ 'status-label' => '回収済', 'class' => 'label-info' ],
@@ -35,8 +40,8 @@ class Lend extends Model
     }
     
     const INTERVAL = [
-         1 => [ 'interval-label' => '1日', 'class' => 'label-default' ],
-         2 => [ 'interval-label' => '1週間', 'class' => 'label-default' ],
+         1 => [ 'interval-label' => '1day', 'class' => 'label-default' ],
+         2 => [ 'interval-label' => '1week', 'class' => 'label-default' ],
         ];
         
     public function getIntervalLabelAttribute()

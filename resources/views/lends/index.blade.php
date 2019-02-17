@@ -27,8 +27,12 @@
           <td>
             <span class="label {{ $lend->interval_class }}">{{ $lend->interval_label }}</span>
           </td>
-          <td><a href="#">編集</a></td>
-          <td><a href="#">削除</a></td>
+          <td><a href="{{ route('lends.edit', ['id' => $lend->user_id, 'lend_id' => $lend->id]) }}" class="btn btn-default">編集</a></td>
+          <td><form method="post" action="{{route('lends.delete',['id' => $lend->user_id, 'lend_id' => $lend->id])}}">
+              {{ csrf_field() }}
+              <input type="submit" value="削除" onclick='return confirm("本当に削除しますか？");' class="btn btn-default">
+              </form>
+          </td>
         </tr>
       @endforeach
     </tbody>

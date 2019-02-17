@@ -47,4 +47,48 @@ class LendController extends Controller
             ]);
     }
     
+    public function showEditForm(int $id, int $lend_id)
+    {
+        $lend = Lend::find($lend_id);
+        
+        return view('lends/edit',[
+            'lend' => $lend,
+            ]);
+    }
+    
+    public function edit(int $id, int $lend_id, Request $request)
+    {
+        $this->validate($request,[
+        'name' => 'required',
+        'email' => 'email|required',
+        'lending_money' => 'integer|required',
+        'status' => 'required|in:1,2',
+        'interval' => 'required|in:1,2',
+        ]);
+        
+        $lend = Lend::find($lend_id);
+        
+        $lend->name = $request->name;
+        $lend->email = $request->email;
+        $lend->lending_money = $request->lending_money;
+        $lend->status = $request->status;
+        $lend->interval = $request->interval;
+        
+        $lend->save();
+        
+        return redirect()->route('lends.index',[
+            'id' => $lend->user_id,
+            ]);
+    }
+    
+    public function delete(int $id, int $lend_id)
+    {
+        $lend = Lend::find($lend_id);
+        $lend->delete();
+        return redirect()->route('lends.index',[
+            'id' => $lend->user_id,
+            ]);
+    }
+    
+    
 }

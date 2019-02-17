@@ -59,9 +59,18 @@ Route::group(['prefix' => 'user'], function(){
     
     Route::post('/{id}/lends/create','LendController@create');
    
-        //貸し情報一覧
+    //貸し情報の編集
+    Route::get('/{id}/lends/{lend_id}/edit','LendController@showEditForm')->name('lends.edit');
+    
+    Route::post('/{id}/lends/{lend_id}/edit','LendController@edit');
+    
+    //貸し情報の削除
+    Route::post('/{id}/lends/{lend_id}/delete','LendController@delete')->name('lends.delete');
+    
+    //貸し情報一覧
     Route::get('/{id}/lends','LendController@index')->name('lends.index');
     });
+    
 });
 
 

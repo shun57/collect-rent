@@ -26,7 +26,7 @@
               </div>
               <div class="form-group">
                 <label for="lending_money">貸した額</label>
-                <input type="number" min="0" value="0" class="form-control" name="lending_money" id="lending_money" value="{{ old('lending_money') }}" />
+                <input type="number" min="1" value="0" class="form-control" name="lending_money" id="lending_money" value="{{ old('lending_money') }}" />
               </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary">取り立て！</button>
