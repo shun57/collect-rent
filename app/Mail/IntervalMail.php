@@ -13,18 +13,19 @@ class IntervalMail extends Mailable
 {
     use Queueable, SerializesModels;
     
-    protected $current_user;
-    protected $lend;
+    protected $user;
+    protected $user_lend;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($current_user,$lend)
+    public function __construct($user,$user_lend)
     {
-        $this->current_user = $current_user;
-        $this->lend = $lend;
+        $this->user = $user;
+        $this->user_lend = $user_lend;
+        
         //
     }
 
@@ -38,8 +39,8 @@ class IntervalMail extends Mailable
         return $this->subject('取り立て屋appからのご連絡です！')
             ->text('emails.interval_mail')
             ->with([
-                    'current_user' => $this->current_user,
-                    'lend' => $this->lend,
+                    'user' => $this->user,
+                    'lend' => $this->user_lend,
                   ]);
     }
 }

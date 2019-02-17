@@ -93,10 +93,16 @@ class LendController extends Controller
             ]);
     }
     
-    // public function send_mail()
-    // {
-        
-    // }
+    public function send_mail()
+    {
+        $users = User::all();
+        foreach($users as $user){
+            $user_lends = $user->lends()->get();
+          foreach($user_lends as $user_lend){
+            \Mail::to($user_lend->email)->send(new IntervalMail($user,$user_lend));
+          }
+        }
+     }
     
     
 }

@@ -14,7 +14,22 @@ class UserController extends Controller
     }
     
     public function getProfile(){
-        return view('user.profile');
+        $user = Auth::user();
+        $lends = $user->lends()->get(); 
+        
+        foreach($lends as $lend){
+            
+            if($lend->status == 1){
+             $lending_money[] = $lend->lending_money;
+            }
+        }
+        
+        $all_lending_money = array_sum($lending_money);
+        
+        return view('user.profile',[
+            'user' => $user,
+            'all_lending_money' => $all_lending_money,
+            ]);
     }
     
     public function postSignup(Request $request){

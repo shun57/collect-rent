@@ -3,16 +3,20 @@
 @section('content')
   <div style="margin-top: 80px;">
       <h3>マイページ</h3>
-      <table class="table table-striped">
+      <table class="table">
           <tr>
-              <th>名前</th>
-              <td>{{Auth::user()->name}}</td>
+              <td>名前</td>
+              <td>メールアドレス</td>
           </tr>
           <tr>
-              <th>メールアドレス</th>
-              <td>{{Auth::user()->email}}</td>
+              <th>{{$user->name}}</th>
+              <th>{{$user->email}}</th>
           </tr>
       </table>
+      <div style="text-align: center;">
+        <h4>貸している総額</h4>
+        <p><span style="font-size: 60px;">{{$all_lending_money}}</span>円</p>
+      </div>
   </div>
   
 @endsection
