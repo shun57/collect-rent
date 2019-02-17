@@ -45,7 +45,7 @@ class LendController extends Controller
         
         $current_user->lends()->save($lend);
         
-        //Mail::to($lend->email)->send(new IntervalMail($current_user,$lend->name,$))
+        Mail::to($lend->email)->send(new IntervalMail($current_user,$lend));
         
         return redirect()->route('lends.index',[
             'id' => $current_user->id,
@@ -92,6 +92,11 @@ class LendController extends Controller
             'id' => $lend->user_id,
             ]);
     }
+    
+    // public function send_mail()
+    // {
+        
+    // }
     
     
 }
