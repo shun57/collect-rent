@@ -28,6 +28,7 @@
     "@storybook/react": "^6.1.21",
     "@storybook/testing-library": "^0.0.11",
     "@tailwindcss/forms": "^0.4.0",
+    "@types/react-dom": "^18.0.4",
     "autoprefixer": "^10.4.2",
     "axios": "^0.25",
     "babel-loader": "^8.2.5",
@@ -41,5 +42,6 @@
     "tailwindcss": "^3.0.18",
     "ts-loader": "^9.3.0",
     "typescript": "^4.4.4"
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }

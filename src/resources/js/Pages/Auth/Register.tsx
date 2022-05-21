@@ -6,6 +6,8 @@ import Label from '@/Components/Label';
 import ValidationErrors from '@/Components/ValidationErrors';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
+type Name = "email" | "password" | "name";
+
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
@@ -20,11 +22,11 @@ export default function Register() {
         };
     }, []);
 
-    const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+    const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setData(event.target.name as Name, event.target.type === 'checkbox' ? event.target.checked + '' : event.target.value);
     };
 
-    const submit = (e) => {
+    const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         post(route('register'));

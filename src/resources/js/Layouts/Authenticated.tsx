@@ -5,7 +5,13 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/inertia-react';
 
-export default function Authenticated({ auth, header, children }) {
+interface Props {
+    auth: any;
+    header: React.ReactNode;
+    children: React.ReactNode;
+}
+
+export default function Authenticated({ auth, header, children }: Props) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (

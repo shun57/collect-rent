@@ -2,9 +2,33 @@ import React, { useState, useContext } from 'react';
 import { Link } from '@inertiajs/inertia-react';
 import { Transition } from '@headlessui/react';
 
-const DropDownContext = React.createContext();
+interface ContextType {
+    open: boolean,
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    toggleOpen: React.MouseEventHandler<HTMLDivElement>,
+}
 
-const Dropdown = ({ children }) => {
+interface Children {
+    children: React.ReactNode;
+}
+
+type ContentProps = {
+    align?: string;
+    width?: string;
+    contentClasses?: string;
+    children: React.ReactNode;
+}
+
+type DropdownLinkProps = {
+    href: string;
+    method?: string;
+    as?: string;
+    children: React.ReactNode;
+}
+
+const DropDownContext = React.createContext<ContextType>({} as ContextType);
+
+const Dropdown = ({ children }: Children) => {
     const [open, setOpen] = useState(false);
 
     const toggleOpen = () => {
@@ -18,7 +42,7 @@ const Dropdown = ({ children }) => {
     );
 };
 
-const Trigger = ({ children }) => {
+const Trigger = ({ children }: Children) => {
     const { open, setOpen, toggleOpen } = useContext(DropDownContext);
 
     return (
@@ -30,7 +54,7 @@ const Trigger = ({ children }) => {
     );
 };
 
-const Content = ({ align = 'right', width = '48', contentClasses = 'py-1 bg-white', children }) => {
+const Content = ({ align = 'right', width = '48', contentClasses = 'py-1 bg-white', children }: ContentProps) => {
     const { open, setOpen } = useContext(DropDownContext);
 
     let alignmentClasses = 'origin-top';
@@ -73,7 +97,7 @@ const Content = ({ align = 'right', width = '48', contentClasses = 'py-1 bg-whit
     );
 };
 
-const DropdownLink = ({ href, method = 'post', as = 'a', children }) => {
+const DropdownLink = ({ href, method = 'post', as = 'a', children }: DropdownLinkProps) => {
     return (
         <Link
             href={href}
