@@ -2,11 +2,13 @@ version: "3.9"
 services:
   app:
     build: ./infra/php
+    container_name: collect_app
     volumes:
       - ./src:/app
 
   web:
     image: nginx:1.20-alpine
+    container_name: collect_web
     ports:
       - 8080:80
     volumes:
@@ -16,8 +18,19 @@ services:
 
   db:
     build: ./infra/mysql
+    container_name: collect_db
     volumes:
       - db-store:/var/lib/mysql
+  
+  storybook:
+    image: node:12.3.1-alpine
+    container_name: collect_storybook
+    tty: true
+    volumes: 
+      - ./src:/app
+    working_dir: /app
+    ports:
+      - 9001:9001
 
 volumes:
   db-store:
