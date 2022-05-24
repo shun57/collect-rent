@@ -7,12 +7,12 @@ import Label from '@/Components/Label';
 import ValidationErrors from '@/Components/ValidationErrors';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
+declare var route;
+
 interface Props {
     status: string;
     canResetPassword: boolean;
 }
-
-type Name = "email" | "password" | "remember";
 
 export default function Login({ status, canResetPassword }: Props) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -28,7 +28,7 @@ export default function Login({ status, canResetPassword }: Props) {
     }, []);
 
     const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setData(event.target.name as Name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+        setData(event.target.name as "email" | "password" | "remember", event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {

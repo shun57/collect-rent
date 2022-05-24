@@ -6,7 +6,7 @@ import Label from '@/Components/Label';
 import ValidationErrors from '@/Components/ValidationErrors';
 import { Head, useForm } from '@inertiajs/inertia-react';
 
-type Name = "password";
+declare var route;
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -20,7 +20,7 @@ export default function ConfirmPassword() {
     }, []);
 
     const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setData(event.target.name as Name, event.target.value);
+        setData(event.target.name as "password", event.target.value);
     };
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {

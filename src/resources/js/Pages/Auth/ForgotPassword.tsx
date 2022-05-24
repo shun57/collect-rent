@@ -5,11 +5,11 @@ import Input from '@/Components/Input';
 import ValidationErrors from '@/Components/ValidationErrors';
 import { Head, useForm } from '@inertiajs/inertia-react';
 
+declare var route;
+
 interface Props {
     status: string;
 }
-
-type Name = "email";
 
 export default function ForgotPassword({ status }: Props) {
     const { data, setData, post, processing, errors } = useForm({
@@ -17,7 +17,7 @@ export default function ForgotPassword({ status }: Props) {
     });
 
     const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setData(event.target.name as Name, event.target.value);
+        setData(event.target.name as "email", event.target.value);
     };
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {

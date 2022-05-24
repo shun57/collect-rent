@@ -2,7 +2,7 @@ import React from 'react';
 
 interface Props {
     name: string;
-    value: string;
+    value: any;
     handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 

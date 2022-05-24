@@ -5,8 +5,8 @@ interface Props {
     method?: string;
     as?: string;
     href: string;
-    active: boolean;
-    children: React.ReactNode;
+    active?: boolean;
+    children?: React.ReactNode;
 }
 
 export default function ResponsiveNavLink({ method = 'get', as = 'a', href, active = false, children }: Props) {

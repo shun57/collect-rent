@@ -3,6 +3,8 @@ import Button from '@/Components/Button';
 import Guest from '@/Layouts/Guest';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
+declare var route;
+
 interface Props {
     status: string;
 }

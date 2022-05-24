@@ -5,6 +5,8 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/inertia-react';
 
+declare var route;
+
 interface Props {
     auth: any;
     header: React.ReactNode;

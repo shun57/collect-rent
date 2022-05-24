@@ -6,6 +6,8 @@ import Label from '@/Components/Label';
 import ValidationErrors from '@/Components/ValidationErrors';
 import { Head, useForm } from '@inertiajs/inertia-react';
 
+declare var route;
+
 interface Props {
     token: string;
     email: string;

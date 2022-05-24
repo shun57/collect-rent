@@ -4,7 +4,7 @@ interface Props {
     forInput: string;
     value: string;
     className?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 export default function Label({ forInput, value, className, children }: Props) {
