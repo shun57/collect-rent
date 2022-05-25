@@ -31,10 +31,10 @@ export default function ConfirmPassword() {
 
     return (
         <Guest>
-            <Head title="Confirm Password" />
+            <Head title="パスワード認証" />
 
             <div className="mb-4 text-sm text-gray-600">
-                This is a secure area of the application. Please confirm your password before continuing.
+                パスワードを認証してください。
             </div>
 
             <ValidationErrors errors={errors} />
@@ -55,7 +55,7 @@ export default function ConfirmPassword() {
 
                 <div className="flex items-center justify-end mt-4">
                     <Button className="ml-4" processing={processing}>
-                        Confirm
+                        認証する
                     </Button>
                 </div>
             </form>

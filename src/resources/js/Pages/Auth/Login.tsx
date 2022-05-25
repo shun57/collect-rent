@@ -39,7 +39,7 @@ export default function Login({ status, canResetPassword }: Props) {
 
     return (
         <Guest>
-            <Head title="Log in" />
+            <Head title="ログイン" />
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
@@ -83,7 +83,7 @@ export default function Login({ status, canResetPassword }: Props) {
                     <label className="flex items-center">
                         <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
 
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                        <span className="ml-2 text-sm text-gray-600">ログイン情報を記憶する</span>
                     </label>
                 </div>
 
@@ -93,12 +93,12 @@ export default function Login({ status, canResetPassword }: Props) {
                             href={route('password.request')}
                             className="underline text-sm text-gray-600 hover:text-gray-900"
                         >
-                            Forgot your password?
+                            パスワードを忘れた方はこちら
                         </Link>
                     )}
 
                     <Button className="ml-4" processing={processing}>
-                        Log in
+                        ログイン
                     </Button>
                 </div>
             </form>

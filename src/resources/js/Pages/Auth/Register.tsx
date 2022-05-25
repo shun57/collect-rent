@@ -34,7 +34,7 @@ export default function Register() {
 
     return (
         <Guest>
-            <Head title="Register" />
+            <Head title="新規登録" />
 
             <ValidationErrors errors={errors} />
 
@@ -97,11 +97,11 @@ export default function Register() {
 
                 <div className="flex items-center justify-end mt-4">
                     <Link href={route('login')} className="underline text-sm text-gray-600 hover:text-gray-900">
-                        Already registered?
+                        ログインはこちら
                     </Link>
 
                     <Button className="ml-4" processing={processing}>
-                        Register
+                        新規登録する
                     </Button>
                 </div>
             </form>

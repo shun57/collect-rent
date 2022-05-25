@@ -20,22 +20,22 @@ export default function VerifyEmail({ status }: Props) {
 
     return (
         <Guest>
-            <Head title="Email Verification" />
+            <Head title="メールアドレス確認" />
 
             <div className="mb-4 text-sm text-gray-600">
-                Thanks for signing up! Before getting started, could you verify your email address by clicking on the
-                link we just emailed to you? If you didn't receive the email, we will gladly send you another.
+                登録ありがとうございます！届いたメールアドレスを確認してください。
+                メールが届かない場合、下のボタンからメールを再送信してください。
             </div>
 
             {status === 'verification-link-sent' && (
                 <div className="mb-4 font-medium text-sm text-green-600">
-                    A new verification link has been sent to the email address you provided during registration.
+                    登録されたメールアドレスに新しいメールを送信しました。
                 </div>
             )}
 
             <form onSubmit={submit}>
                 <div className="mt-4 flex items-center justify-between">
-                    <Button processing={processing}>Resend Verification Email</Button>
+                    <Button processing={processing}>メール再送信</Button>
 
                     <Link
                         href={route('logout')}
@@ -43,7 +43,7 @@ export default function VerifyEmail({ status }: Props) {
                         as="button"
                         className="underline text-sm text-gray-600 hover:text-gray-900"
                     >
-                        Log Out
+                        ログアウト
                     </Link>
                 </div>
             </form>

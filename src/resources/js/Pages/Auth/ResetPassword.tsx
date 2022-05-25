@@ -41,7 +41,7 @@ export default function ResetPassword({ token, email }: Props) {
 
     return (
         <Guest>
-            <Head title="Reset Password" />
+            <Head title="パスワード変更" />
 
             <ValidationErrors errors={errors} />
 
@@ -88,7 +88,7 @@ export default function ResetPassword({ token, email }: Props) {
 
                 <div className="flex items-center justify-end mt-4">
                     <Button className="ml-4" processing={processing}>
-                        Reset Password
+                        パスワードを変更する
                     </Button>
                 </div>
             </form>
