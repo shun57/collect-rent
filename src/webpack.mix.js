@@ -25,3 +25,9 @@ mix.ts('resources/js/app.tsx', 'public/js')
 if (mix.inProduction()) {
     mix.version();
 }
+
+mix.webpackConfig({
+    stats: {
+        children: true,
+    },
+});

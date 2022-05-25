@@ -7,6 +7,7 @@ module.exports = {
         './resources/views/**/*.blade.php',
         './resources/js/**/*.js',
         './resources/js/**/*.ts',
+        './resources/js/**/*.jsx',
         './resources/js/**/*.tsx',
     ],
 
