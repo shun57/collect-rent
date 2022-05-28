@@ -54,7 +54,7 @@ export default function ConfirmPassword() {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    <Button className="ml-4" processing={processing}>
+                    <Button className="ml-4 bg-gray-900" processing={processing}>
                         認証する
                     </Button>
                 </div>

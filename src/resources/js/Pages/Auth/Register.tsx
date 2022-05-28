@@ -100,7 +100,7 @@ export default function Register() {
                         ログインはこちら
                     </Link>
 
-                    <Button className="ml-4" processing={processing}>
+                    <Button className="ml-4 bg-gray-900" processing={processing}>
                         新規登録する
                     </Button>
                 </div>

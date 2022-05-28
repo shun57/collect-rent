@@ -35,7 +35,7 @@ export default function VerifyEmail({ status }: Props) {
 
             <form onSubmit={submit}>
                 <div className="mt-4 flex items-center justify-between">
-                    <Button processing={processing}>メール再送信</Button>
+                    <Button className="bg-gray-900" processing={processing}>メール再送信</Button>
 
                     <Link
                         href={route('logout')}

@@ -8,8 +8,7 @@ export default {
   args: {
     href: 'ResponsiveNavLink',
     children: 'ResponsiveNavLink',
-    active: true,
-    className: 'w-full flex items-start pl-3 pr-4 py-2 border-l-4'
+    active: true
   }
 };
 

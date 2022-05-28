@@ -7,8 +7,7 @@ export default {
   component: Label,
   args: {
     forInput: 'Lavel',
-    value: 'Lavel',
-    className: 'block font-medium text-sm text-gray-700'
+    value: 'Lavel'
   }
 };
 

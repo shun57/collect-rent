@@ -7,9 +7,8 @@ export default {
   component: Button,
   args: {
     children: "Button",
-    type: "submit",
-    className: "inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150",
-    processing: "false"
+    className: "bg-gray-900",
+    processing: false
   }
 };
 
@@ -17,3 +16,13 @@ export default {
 const Template = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
+
+export const Red = Template.bind({});
+Red.args = {
+  className: "bg-red-600"
+}
+
+export const Blue = Template.bind({});
+Blue.args = {
+  className: "bg-blue-600"
+}

@@ -97,7 +97,7 @@ export default function Login({ status, canResetPassword }: Props) {
                         </Link>
                     )}
 
-                    <Button className="ml-4" processing={processing}>
+                    <Button className="ml-4 bg-gray-900" processing={processing}>
                         ログイン
                     </Button>
                 </div>
