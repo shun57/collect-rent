@@ -18,6 +18,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
+Route::get('/list', function () {
+    return Inertia::render('Lent/Lent');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

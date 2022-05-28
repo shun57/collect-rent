@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Collect Lent';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

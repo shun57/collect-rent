@@ -4301,7 +4301,7 @@ function Button(_ref) {
       children = _ref.children;
   return (0, jsx_runtime_1.jsx)("button", Object.assign({
     type: type,
-    className: "inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ".concat(processing && 'opacity-25', " ") + className,
+    className: "inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest transition ease-in-out duration-150 ".concat(processing && 'opacity-25', " ") + className,
     disabled: processing
   }, {
     children: children
@@ -4711,6 +4711,75 @@ exports["default"] = ResponsiveNavLink;
 
 /***/ }),
 
+/***/ "./resources/js/Components/Table.tsx":
+/*!*******************************************!*\
+  !*** ./resources/js/Components/Table.tsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var Table = function Table(_ref) {
+  var children = _ref.children,
+      className = _ref.className;
+  return (0, jsx_runtime_1.jsx)("table", Object.assign({
+    className: "table-auto border-collapse border " + className
+  }, {
+    children: children
+  }));
+};
+
+var TableHeader = function TableHeader(_ref2) {
+  var th = _ref2.th,
+      className = _ref2.className,
+      children = _ref2.children;
+  var headerItem = th.map(function (th, index) {
+    return (0, jsx_runtime_1.jsx)("th", Object.assign({
+      className: "px-4 py-2 border bg-gray-100 " + className
+    }, {
+      children: th
+    }), index);
+  });
+  return (0, jsx_runtime_1.jsx)("thead", {
+    children: (0, jsx_runtime_1.jsx)("tr", {
+      children: headerItem
+    })
+  });
+};
+
+var TableRow = function TableRow(_ref3) {
+  var tds = _ref3.tds,
+      className = _ref3.className,
+      children = _ref3.children;
+  var bodyItems = tds.map(function (td) {
+    return (0, jsx_runtime_1.jsxs)("tr", {
+      children: [td.map(function (row, index) {
+        return (0, jsx_runtime_1.jsx)("td", Object.assign({
+          className: "px-4 py-2 border " + className
+        }, {
+          children: row
+        }), index);
+      }), children]
+    });
+  });
+  return (0, jsx_runtime_1.jsx)("tbody", {
+    children: bodyItems
+  });
+};
+
+Table.TableHeader = TableHeader;
+Table.TableRow = TableRow;
+exports["default"] = Table;
+
+/***/ }),
+
 /***/ "./resources/js/Components/ValidationErrors.tsx":
 /*!******************************************************!*\
   !*** ./resources/js/Components/ValidationErrors.tsx ***!
@@ -4833,10 +4902,10 @@ function Authenticated(_ref) {
               className: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
             }, {
               children: (0, jsx_runtime_1.jsx)(NavLink_1["default"], Object.assign({
-                href: route('dashboard'),
-                active: route().current('dashboard')
+                href: "/",
+                active: true
               }, {
-                children: "Dashboard"
+                children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
               }))
             }))]
           })), (0, jsx_runtime_1.jsx)("div", Object.assign({
@@ -4850,11 +4919,11 @@ function Authenticated(_ref) {
                   children: (0, jsx_runtime_1.jsx)("span", Object.assign({
                     className: "inline-flex rounded-md"
                   }, {
-                    children: (0, jsx_runtime_1.jsxs)("button", Object.assign({
+                    children: (0, jsx_runtime_1.jsx)("button", Object.assign({
                       type: "button",
                       className: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                     }, {
-                      children: [auth.user.name, (0, jsx_runtime_1.jsx)("svg", Object.assign({
+                      children: (0, jsx_runtime_1.jsx)("svg", Object.assign({
                         className: "ml-2 -mr-0.5 h-4 w-4",
                         xmlns: "http://www.w3.org/2000/svg",
                         viewBox: "0 0 20 20",
@@ -4865,12 +4934,12 @@ function Authenticated(_ref) {
                           d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
                           clipRule: "evenodd"
                         })
-                      }))]
+                      }))
                     }))
                   }))
                 }), (0, jsx_runtime_1.jsx)(Dropdown_1["default"].Content, {
                   children: (0, jsx_runtime_1.jsx)(Dropdown_1["default"].Link, Object.assign({
-                    href: route('logout'),
+                    href: "/",
                     method: "post",
                     as: "button"
                   }, {
@@ -4920,32 +4989,22 @@ function Authenticated(_ref) {
           className: "pt-2 pb-3 space-y-1"
         }, {
           children: (0, jsx_runtime_1.jsx)(ResponsiveNavLink_1["default"], Object.assign({
-            href: route('dashboard'),
-            active: route().current('dashboard')
+            href: "/",
+            active: true
           }, {
-            children: "Dashboard"
+            children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
           }))
         })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
           className: "pt-4 pb-1 border-t border-gray-200"
         }, {
-          children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({
+          children: [(0, jsx_runtime_1.jsx)("div", {
             className: "px-4"
-          }, {
-            children: [(0, jsx_runtime_1.jsx)("div", Object.assign({
-              className: "font-medium text-base text-gray-800"
-            }, {
-              children: auth.user.name
-            })), (0, jsx_runtime_1.jsx)("div", Object.assign({
-              className: "font-medium text-sm text-gray-500"
-            }, {
-              children: auth.user.email
-            }))]
-          })), (0, jsx_runtime_1.jsx)("div", Object.assign({
+          }), (0, jsx_runtime_1.jsx)("div", Object.assign({
             className: "mt-3 space-y-1"
           }, {
             children: (0, jsx_runtime_1.jsx)(ResponsiveNavLink_1["default"], Object.assign({
               method: "post",
-              href: route('logout'),
+              href: "/",
               as: "button"
             }, {
               children: "\u30ED\u30B0\u30A2\u30A6\u30C8"
@@ -5112,7 +5171,7 @@ function ConfirmPassword() {
         className: "flex items-center justify-end mt-4"
       }, {
         children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-          className: "ml-4",
+          className: "ml-4 bg-gray-900",
           processing: processing
         }, {
           children: "\u8A8D\u8A3C\u3059\u308B"
@@ -5205,7 +5264,7 @@ function ForgotPassword(_ref) {
         className: "flex items-center justify-end mt-4"
       }, {
         children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-          className: "ml-4",
+          className: "ml-4 bg-gray-900",
           processing: processing
         }, {
           children: "\u30D1\u30B9\u30EF\u30FC\u30C9\u306E\u30EA\u30BB\u30C3\u30C8\u30EA\u30F3\u30AF\u3092\u9001\u308B"
@@ -5360,7 +5419,7 @@ function Login(_ref) {
         }, {
           children: "\u30D1\u30B9\u30EF\u30FC\u30C9\u3092\u5FD8\u308C\u305F\u65B9\u306F\u3053\u3061\u3089"
         })), (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-          className: "ml-4",
+          className: "ml-4 bg-gray-900",
           processing: processing
         }, {
           children: "\u30ED\u30B0\u30A4\u30F3"
@@ -5513,7 +5572,7 @@ function Register() {
         }, {
           children: "\u30ED\u30B0\u30A4\u30F3\u306F\u3053\u3061\u3089"
         })), (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-          className: "ml-4",
+          className: "ml-4 bg-gray-900",
           processing: processing
         }, {
           children: "\u65B0\u898F\u767B\u9332\u3059\u308B"
@@ -5647,7 +5706,7 @@ function ResetPassword(_ref) {
         className: "flex items-center justify-end mt-4"
       }, {
         children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-          className: "ml-4",
+          className: "ml-4 bg-gray-900",
           processing: processing
         }, {
           children: "\u30D1\u30B9\u30EF\u30FC\u30C9\u3092\u5909\u66F4\u3059\u308B"
@@ -5718,6 +5777,7 @@ function VerifyEmail(_ref) {
         className: "mt-4 flex items-center justify-between"
       }, {
         children: [(0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+          className: "bg-gray-900",
           processing: processing
         }, {
           children: "\u30E1\u30FC\u30EB\u518D\u9001\u4FE1"
@@ -5738,9 +5798,31 @@ exports["default"] = VerifyEmail;
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Dashboard.tsx":
+/***/ "./resources/js/Pages/Lent/CreateLent.tsx":
+/*!************************************************!*\
+  !*** ./resources/js/Pages/Lent/CreateLent.tsx ***!
+  \************************************************/
+/***/ (() => {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Lent/EditLent.tsx":
+/*!**********************************************!*\
+  !*** ./resources/js/Pages/Lent/EditLent.tsx ***!
+  \**********************************************/
+/***/ (() => {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Lent/Lent.tsx":
 /*!******************************************!*\
-  !*** ./resources/js/Pages/Dashboard.tsx ***!
+  !*** ./resources/js/Pages/Lent/Lent.tsx ***!
   \******************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -5763,38 +5845,66 @@ var Authenticated_1 = __importDefault(__webpack_require__(/*! @/Layouts/Authenti
 
 var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
-function Dashboard(props) {
+var Table_1 = __importDefault(__webpack_require__(/*! @/Components/Table */ "./resources/js/Components/Table.tsx"));
+
+var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
+
+function Lent(props) {
+  var header_list = ["名前", "送信先アドレス", "貸した金額", "貸した日", "催促間隔", "", ""];
+  var lent_list = [["テスト太郎", "test@test.com", "1000", "2020/05/05", "3日毎"], ["テスト太郎", "test@test.com", "3000", "2020/05/09", "1日毎"]];
   return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({
     auth: props.auth,
     header: (0, jsx_runtime_1.jsx)("h2", Object.assign({
       className: "font-semibold text-xl text-gray-800 leading-tight"
     }, {
-      children: "Dashboard"
+      children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
     }))
   }, {
     children: [(0, jsx_runtime_1.jsx)(inertia_react_1.Head, {
-      title: "Dashboard"
-    }), (0, jsx_runtime_1.jsx)("div", Object.assign({
-      className: "py-12"
+      title: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
+    }), (0, jsx_runtime_1.jsx)("p", Object.assign({
+      className: "bg-white sm:px-6 lg:px-8"
+    }, {
+      children: "\u8A2D\u5B9A\u3057\u305F\u9593\u9694\u306719:00\u306B\u50AC\u4FC3\u30E1\u30FC\u30EB\u304C\u5C4A\u304D\u307E\u3059\u3002\u50AC\u4FC3\u30E1\u30FC\u30EB\u3092\u6B62\u3081\u308B\u306B\u306F\u3001\u56DE\u53CE\u6E08\u30DC\u30BF\u30F3\u3092\u62BC\u4E0B\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+    })), (0, jsx_runtime_1.jsx)("div", Object.assign({
+      className: "py-12 bg-white"
     }, {
       children: (0, jsx_runtime_1.jsx)("div", Object.assign({
-        className: "max-w-7xl mx-auto sm:px-6 lg:px-8"
+        className: "mx-auto sm:px-6 lg:px-8"
       }, {
-        children: (0, jsx_runtime_1.jsx)("div", Object.assign({
-          className: "bg-white overflow-hidden shadow-sm sm:rounded-lg"
-        }, {
-          children: (0, jsx_runtime_1.jsx)("div", Object.assign({
-            className: "p-6 bg-white border-b border-gray-200"
+        children: (0, jsx_runtime_1.jsxs)(Table_1["default"], {
+          children: [(0, jsx_runtime_1.jsx)(Table_1["default"].TableHeader, {
+            th: header_list
+          }), (0, jsx_runtime_1.jsxs)(Table_1["default"].TableRow, Object.assign({
+            tds: lent_list
           }, {
-            children: "You're logged in!"
-          }))
-        }))
+            children: [(0, jsx_runtime_1.jsx)("td", Object.assign({
+              className: "border text-center"
+            }, {
+              children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+                className: "m-2 bg-blue-600",
+                processing: false
+              }, {
+                children: "\u7DE8\u96C6"
+              }))
+            })), (0, jsx_runtime_1.jsx)("td", Object.assign({
+              className: "border text-center"
+            }, {
+              children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+                className: "m-2 bg-red-600",
+                processing: false
+              }, {
+                children: "\u56DE\u53CE\u6E08"
+              }))
+            }))]
+          }))]
+        })
       }))
     }))]
   }));
 }
 
-exports["default"] = Dashboard;
+exports["default"] = Lent;
 
 /***/ }),
 
@@ -5823,7 +5933,7 @@ var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./nod
 
 var progress_1 = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
 
-var appName = ((_a = window.document.getElementsByTagName('title')[0]) === null || _a === void 0 ? void 0 : _a.innerText) || 'Laravel';
+var appName = ((_a = window.document.getElementsByTagName('title')[0]) === null || _a === void 0 ? void 0 : _a.innerText) || 'Collect Lent';
 (0, inertia_react_1.createInertiaApp)({
   title: function title(_title) {
     return "".concat(_title, " - ").concat(appName);
@@ -59044,8 +59154,12 @@ var map = {
 	"./Auth/ResetPassword.tsx": "./resources/js/Pages/Auth/ResetPassword.tsx",
 	"./Auth/VerifyEmail": "./resources/js/Pages/Auth/VerifyEmail.tsx",
 	"./Auth/VerifyEmail.tsx": "./resources/js/Pages/Auth/VerifyEmail.tsx",
-	"./Dashboard": "./resources/js/Pages/Dashboard.tsx",
-	"./Dashboard.tsx": "./resources/js/Pages/Dashboard.tsx"
+	"./Lent/CreateLent": "./resources/js/Pages/Lent/CreateLent.tsx",
+	"./Lent/CreateLent.tsx": "./resources/js/Pages/Lent/CreateLent.tsx",
+	"./Lent/EditLent": "./resources/js/Pages/Lent/EditLent.tsx",
+	"./Lent/EditLent.tsx": "./resources/js/Pages/Lent/EditLent.tsx",
+	"./Lent/Lent": "./resources/js/Pages/Lent/Lent.tsx",
+	"./Lent/Lent.tsx": "./resources/js/Pages/Lent/Lent.tsx"
 };
 
 
