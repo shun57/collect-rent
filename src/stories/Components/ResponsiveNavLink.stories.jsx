@@ -1,5 +1,5 @@
 import React from 'react';
-import ResponsiveNavLink from '../resources/js/Components/ResponsiveNavLink';
+import ResponsiveNavLink from '../../resources/js/Components/ResponsiveNavLink';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

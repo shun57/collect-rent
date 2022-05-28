@@ -1,19 +1,16 @@
 import React from 'react';
-import ValidationErrors from '../resources/js/Components/ValidationErrors';
+import ApplicationLogo from '../../resources/js/Components/ApplicationLogo';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Component/ValidationErrors',
-  component: ValidationErrors,
+  title: 'Component/ApplicationLogo',
+  component: ApplicationLogo,
   args: {
-    errors: {
-      error1: 'error1',
-      error2: 'error2'
-    },
+    className: "w-20 h-20 fill-current text-gray-500"
   }
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <ValidationErrors {...args} />;
+const Template = (args) => <ApplicationLogo {...args} />;
 
 export const Default = Template.bind({});

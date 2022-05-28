@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../resources/js/Components/Input';
+import Input from '../../resources/js/Components/Input';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
