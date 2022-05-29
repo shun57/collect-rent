@@ -3,7 +3,8 @@ import React, { useEffect, useRef } from 'react';
 interface InputProps {
     type: string;
     name: string;
-    value: string;
+    value: string | number;
+    max?: number;
     className?: string;
     autoComplete?: string;
     required?: boolean;
@@ -15,6 +16,7 @@ export default function Input({
     type = 'text',
     name,
     value,
+    max,
     className,
     autoComplete,
     required,
@@ -35,6 +37,7 @@ export default function Input({
                 type={type}
                 name={name}
                 value={value}
+                max={max}
                 className={
                     `border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm ` +
                     className

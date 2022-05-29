@@ -20,7 +20,11 @@ Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 Route::get('/list', function () {
     return Inertia::render('Lent/Lent');
-});
+})->name('list');
+
+Route::get('/create', function () {
+    return Inertia::render('Lent/CreateLent');
+})->name('create');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

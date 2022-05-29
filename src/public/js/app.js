@@ -4571,6 +4571,7 @@ function Input(_ref) {
       type = _ref$type === void 0 ? 'text' : _ref$type,
       name = _ref.name,
       value = _ref.value,
+      max = _ref.max,
       className = _ref.className,
       autoComplete = _ref.autoComplete,
       required = _ref.required,
@@ -4591,6 +4592,7 @@ function Input(_ref) {
       type: type,
       name: name,
       value: value,
+      max: max,
       className: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm " + className,
       ref: input,
       autoComplete: autoComplete,
@@ -4708,6 +4710,47 @@ function ResponsiveNavLink(_ref) {
 }
 
 exports["default"] = ResponsiveNavLink;
+
+/***/ }),
+
+/***/ "./resources/js/Components/SelectBox.tsx":
+/*!***********************************************!*\
+  !*** ./resources/js/Components/SelectBox.tsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+function SelectBox(_ref) {
+  var options = _ref.options,
+      handleChange = _ref.handleChange;
+  var option = options.map(function (option, index) {
+    return (0, jsx_runtime_1.jsx)("option", Object.assign({
+      value: index
+    }, {
+      children: option
+    }));
+  });
+  return (0, jsx_runtime_1.jsx)("div", {
+    children: (0, jsx_runtime_1.jsx)("select", Object.assign({
+      className: "form-select appearance-none border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block w-full px-3 py-1.5",
+      onChange: function onChange(e) {
+        return handleChange(e);
+      }
+    }, {
+      children: option
+    }))
+  });
+}
+
+exports["default"] = SelectBox;
 
 /***/ }),
 
@@ -5802,10 +5845,151 @@ exports["default"] = VerifyEmail;
 /*!************************************************!*\
   !*** ./resources/js/Pages/Lent/CreateLent.tsx ***!
   \************************************************/
-/***/ (() => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
+
+var Authenticated_1 = __importDefault(__webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.tsx"));
+
+var Input_1 = __importDefault(__webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.tsx"));
+
+var Label_1 = __importDefault(__webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.tsx"));
+
+var SelectBox_1 = __importDefault(__webpack_require__(/*! @/Components/SelectBox */ "./resources/js/Components/SelectBox.tsx"));
+
+var ValidationErrors_1 = __importDefault(__webpack_require__(/*! @/Components/ValidationErrors */ "./resources/js/Components/ValidationErrors.tsx"));
+
+var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+function CreateLent(props) {
+  var _ref = (0, inertia_react_1.useForm)({
+    name: "",
+    email: "",
+    money: 0,
+    interval: ["1日間", "3日間", "7日間"]
+  }),
+      data = _ref.data,
+      setData = _ref.setData,
+      post = _ref.post,
+      processing = _ref.processing,
+      errors = _ref.errors;
+
+  var onHandleChange = function onHandleChange(event) {
+    setData(event.target.name, event.target.value);
+  };
+
+  var submit = function submit(e) {
+    e.preventDefault();
+    post(route("register"));
+  };
+
+  return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({
+    auth: props.auth,
+    header: (0, jsx_runtime_1.jsx)("h2", Object.assign({
+      className: "font-semibold text-xl text-gray-800 leading-tight"
+    }, {
+      children: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u4F5C\u6210"
+    }))
+  }, {
+    children: [(0, jsx_runtime_1.jsx)(inertia_react_1.Head, {
+      title: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u767B\u9332"
+    }), (0, jsx_runtime_1.jsx)("div", Object.assign({
+      className: "py-12 bg-white"
+    }, {
+      children: (0, jsx_runtime_1.jsxs)("div", Object.assign({
+        className: "mx-auto sm:px-6 lg:px-8"
+      }, {
+        children: [(0, jsx_runtime_1.jsx)(ValidationErrors_1["default"], {
+          errors: errors
+        }), (0, jsx_runtime_1.jsxs)("form", Object.assign({
+          onSubmit: submit
+        }, {
+          children: [(0, jsx_runtime_1.jsxs)("div", {
+            children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+              forInput: "name",
+              value: "\u8CB8\u4E3B\u540D"
+            }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+              type: "text",
+              name: "name",
+              value: data.name,
+              className: "mt-1 block w-full",
+              autoComplete: "name",
+              isFocused: true,
+              handleChange: onHandleChange,
+              required: true
+            })]
+          }), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+            className: "mt-4"
+          }, {
+            children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+              forInput: "email",
+              value: "\u8CB8\u4E3B\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"
+            }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+              type: "email",
+              name: "email",
+              value: data.email,
+              className: "mt-1 block w-full",
+              autoComplete: "username",
+              handleChange: onHandleChange,
+              required: true
+            })]
+          })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+            className: "mt-4"
+          }, {
+            children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+              forInput: "money",
+              value: "\u8CA8\u3057\u305F\u91D1\u984D"
+            }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+              type: "number",
+              name: "money",
+              value: data.money,
+              max: 10000,
+              className: "mt-1 block w-full",
+              handleChange: onHandleChange,
+              required: true
+            })]
+          })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+            className: "mt-4"
+          }, {
+            children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+              forInput: "interval",
+              value: "\u53D6\u308A\u7ACB\u3066\u983B\u5EA6"
+            }), (0, jsx_runtime_1.jsx)(SelectBox_1["default"], {
+              options: data.interval,
+              handleChange: onHandleChange
+            })]
+          })), (0, jsx_runtime_1.jsx)("div", Object.assign({
+            className: "flex items-center justify-end mt-4"
+          }, {
+            children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+              className: "ml-4 bg-green-600",
+              processing: processing
+            }, {
+              children: "\u53D6\u308A\u7ACB\u3066\u308B"
+            }))
+          }))]
+        }))]
+      }))
+    }))]
+  }));
+}
+
+exports["default"] = CreateLent;
 
 /***/ }),
 
@@ -5813,10 +5997,143 @@ exports["default"] = VerifyEmail;
 /*!**********************************************!*\
   !*** ./resources/js/Pages/Lent/EditLent.tsx ***!
   \**********************************************/
-/***/ (() => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
+
+var Authenticated_1 = __importDefault(__webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.tsx"));
+
+var Input_1 = __importDefault(__webpack_require__(/*! @/Components/Input */ "./resources/js/Components/Input.tsx"));
+
+var Label_1 = __importDefault(__webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.tsx"));
+
+var SelectBox_1 = __importDefault(__webpack_require__(/*! @/Components/SelectBox */ "./resources/js/Components/SelectBox.tsx"));
+
+var ValidationErrors_1 = __importDefault(__webpack_require__(/*! @/Components/ValidationErrors */ "./resources/js/Components/ValidationErrors.tsx"));
+
+var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+
+function EditLent(props) {
+  var _ref = (0, inertia_react_1.useForm)({
+    name: '',
+    email: '',
+    money: 0,
+    interval: []
+  }),
+      data = _ref.data,
+      setData = _ref.setData,
+      post = _ref.post,
+      processing = _ref.processing,
+      errors = _ref.errors;
+
+  var onHandleChange = function onHandleChange(event) {
+    setData(event.target.name, event.target.value);
+  };
+
+  var submit = function submit(e) {
+    e.preventDefault();
+    post(route('register'));
+  };
+
+  return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({
+    auth: props.auth,
+    header: (0, jsx_runtime_1.jsx)("h2", Object.assign({
+      className: "font-semibold text-xl text-gray-800 leading-tight"
+    }, {
+      children: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u4F5C\u6210"
+    }))
+  }, {
+    children: [(0, jsx_runtime_1.jsx)(inertia_react_1.Head, {
+      title: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u767B\u9332"
+    }), (0, jsx_runtime_1.jsx)(ValidationErrors_1["default"], {
+      errors: errors
+    }), (0, jsx_runtime_1.jsxs)("form", Object.assign({
+      onSubmit: submit
+    }, {
+      children: [(0, jsx_runtime_1.jsxs)("div", {
+        children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+          forInput: "name",
+          value: "\u8CB8\u4E3B\u540D"
+        }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+          type: "text",
+          name: "name",
+          value: data.name,
+          className: "mt-1 block w-full",
+          autoComplete: "name",
+          isFocused: true,
+          handleChange: onHandleChange,
+          required: true
+        })]
+      }), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+        className: "mt-4"
+      }, {
+        children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+          forInput: "email",
+          value: "\u8CB8\u4E3B\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"
+        }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+          type: "email",
+          name: "email",
+          value: data.email,
+          className: "mt-1 block w-full",
+          autoComplete: "username",
+          handleChange: onHandleChange,
+          required: true
+        })]
+      })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+        className: "mt-4"
+      }, {
+        children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+          forInput: "money",
+          value: "\u8CA8\u3057\u305F\u91D1\u984D"
+        }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+          type: "number",
+          name: "money",
+          value: data.money,
+          max: 10000,
+          className: "mt-1 block w-full",
+          handleChange: onHandleChange,
+          required: true
+        })]
+      })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+        className: "mt-4"
+      }, {
+        children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+          forInput: "interval",
+          value: "\u53D6\u308A\u7ACB\u3066\u983B\u5EA6"
+        }), (0, jsx_runtime_1.jsx)(SelectBox_1["default"], {
+          options: data.interval,
+          handleChange: onHandleChange
+        })]
+      })), (0, jsx_runtime_1.jsx)("div", Object.assign({
+        className: "flex items-center justify-end mt-4"
+      }, {
+        children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+          className: "ml-4 bg-green-600",
+          processing: processing
+        }, {
+          children: "\u53D6\u308A\u7ACB\u3066\u308B"
+        }))
+      }))]
+    }))]
+  }));
+}
+
+exports["default"] = EditLent;
 
 /***/ }),
 
