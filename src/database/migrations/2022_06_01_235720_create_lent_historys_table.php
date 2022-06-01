@@ -12,14 +12,14 @@ return new class extends Migration {
      */
     public function up()
     {
-        if (!Schema::hasTable('users')) {
-            Schema::create('users', function (Blueprint $table) {
+        if (!Schema::hasTable('lent_historys')) {
+            Schema::create('lent_historys', function (Blueprint $table) {
                 $table->id();
+                $table->foreignId('user_id')->constrained()->onDelete('cascade');
                 $table->string('name');
-                $table->string('email')->unique();
-                $table->timestamp('email_verified_at')->nullable();
-                $table->string('password');
-                $table->rememberToken();
+                $table->string('email');
+                $table->unsignedinteger('lend_money');
+                $table->unsignedInteger('interval')->default(1);
                 $table->timestamps();
             });
         }
@@ -32,6 +32,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('lent_historys');
     }
 };
