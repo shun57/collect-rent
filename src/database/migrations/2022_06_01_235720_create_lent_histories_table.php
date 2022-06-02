@@ -12,8 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        if (!Schema::hasTable('lends')) {
-            Schema::create('lends', function (Blueprint $table) {
+        if (!Schema::hasTable('lent_histories')) {
+            Schema::create('lent_histories', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id')->constrained()->onDelete('cascade');
                 $table->string('name');
@@ -32,6 +32,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('lends');
+        Schema::dropIfExists('lent_histories');
     }
 };

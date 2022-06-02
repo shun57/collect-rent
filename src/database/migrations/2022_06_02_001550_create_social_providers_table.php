@@ -12,8 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        if (!Schema::hasTable('social_drivers')) {
-            Schema::create('social_drivers', function (Blueprint $table) {
+        if (!Schema::hasTable('social_providers')) {
+            Schema::create('social_providers', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('user_id')->constrained()->onDelete('cascade');
                 $table->string('provider_id');
@@ -30,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('social_drivers');
+        Schema::dropIfExists('social_providers');
     }
 };
