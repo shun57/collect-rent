@@ -1,6 +1,6 @@
 FROM mysql/mysql-server:8.0
 
-ENV MYSQL_DATABASE=collect_rent \
+ENV MYSQL_DATABASE=collect_lent \
   MYSQL_USER=collecter \
   MYSQL_PASSWORD=collect \
   MYSQL_ROOT_PASSWORD=secret \
