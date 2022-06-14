@@ -6,10 +6,11 @@ import Button from '@/Components/Button';
 
 export default function Lent(props) {
     const header_list = ["名前", "送信先アドレス", "貸した金額", "貸した日", "催促間隔", "", ""];
-    const lent_list = [
-        ["テスト太郎", "test@test.com", "1000", "2020/05/05", "3日毎"],
-        ["テスト太郎", "test@test.com", "3000", "2020/05/09", "1日毎"],
-    ];
+    // const lent_list = [
+    //     ["テスト太郎", "test@test.com", "1000", "2020/05/05", "3日毎"],
+    //     ["テスト太郎", "test@test.com", "3000", "2020/05/09", "1日毎"],
+    // ];
+
     return (
         <Authenticated
             auth={props.auth}
@@ -23,7 +24,7 @@ export default function Lent(props) {
                 <div className="mx-auto sm:px-6 lg:px-8">
                     <Table>
                         <Table.TableHeader th={header_list} />
-                        <Table.TableRow tds={lent_list}>
+                        <Table.TableRow tds={props.lents}>
                             <td className="border text-center"><Button className="m-2 bg-blue-600" processing={false}>編集</Button></td>
                             <td className="border text-center"><Button className="m-2 bg-red-600" processing={false}>回収済</Button></td>
                         </Table.TableRow>

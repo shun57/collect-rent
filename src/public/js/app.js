@@ -4801,16 +4801,16 @@ var TableRow = function TableRow(_ref3) {
   var tds = _ref3.tds,
       className = _ref3.className,
       children = _ref3.children;
-  var bodyItems = tds.map(function (td) {
+  var bodyItems = tds.map(function (row, index) {
     return (0, jsx_runtime_1.jsxs)("tr", {
-      children: [td.map(function (row, index) {
+      children: [Object.keys(row).map(function (key, i) {
         return (0, jsx_runtime_1.jsx)("td", Object.assign({
           className: "px-4 py-2 border " + className
         }, {
-          children: row
-        }), index);
+          children: row[key]
+        }), i);
       }), children]
-    });
+    }, index);
   });
   return (0, jsx_runtime_1.jsx)("tbody", {
     children: bodyItems
@@ -4945,8 +4945,8 @@ function Authenticated(_ref) {
               className: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
             }, {
               children: (0, jsx_runtime_1.jsx)(NavLink_1["default"], Object.assign({
-                href: "/",
-                active: true
+                href: route('list'),
+                active: route().current('list')
               }, {
                 children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
               }))
@@ -4962,11 +4962,11 @@ function Authenticated(_ref) {
                   children: (0, jsx_runtime_1.jsx)("span", Object.assign({
                     className: "inline-flex rounded-md"
                   }, {
-                    children: (0, jsx_runtime_1.jsx)("button", Object.assign({
+                    children: (0, jsx_runtime_1.jsxs)("button", Object.assign({
                       type: "button",
                       className: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                     }, {
-                      children: (0, jsx_runtime_1.jsx)("svg", Object.assign({
+                      children: [auth.user.name, (0, jsx_runtime_1.jsx)("svg", Object.assign({
                         className: "ml-2 -mr-0.5 h-4 w-4",
                         xmlns: "http://www.w3.org/2000/svg",
                         viewBox: "0 0 20 20",
@@ -4977,12 +4977,12 @@ function Authenticated(_ref) {
                           d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z",
                           clipRule: "evenodd"
                         })
-                      }))
+                      }))]
                     }))
                   }))
                 }), (0, jsx_runtime_1.jsx)(Dropdown_1["default"].Content, {
                   children: (0, jsx_runtime_1.jsx)(Dropdown_1["default"].Link, Object.assign({
-                    href: "/",
+                    href: route('logout'),
                     method: "post",
                     as: "button"
                   }, {
@@ -5032,22 +5032,32 @@ function Authenticated(_ref) {
           className: "pt-2 pb-3 space-y-1"
         }, {
           children: (0, jsx_runtime_1.jsx)(ResponsiveNavLink_1["default"], Object.assign({
-            href: "/",
-            active: true
+            href: route('list'),
+            active: route().current('list')
           }, {
             children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
           }))
         })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
           className: "pt-4 pb-1 border-t border-gray-200"
         }, {
-          children: [(0, jsx_runtime_1.jsx)("div", {
+          children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({
             className: "px-4"
-          }), (0, jsx_runtime_1.jsx)("div", Object.assign({
+          }, {
+            children: [(0, jsx_runtime_1.jsx)("div", Object.assign({
+              className: "font-medium text-base text-gray-800"
+            }, {
+              children: auth.user.name
+            })), (0, jsx_runtime_1.jsx)("div", Object.assign({
+              className: "font-medium text-sm text-gray-500"
+            }, {
+              children: auth.user.email
+            }))]
+          })), (0, jsx_runtime_1.jsx)("div", Object.assign({
             className: "mt-3 space-y-1"
           }, {
             children: (0, jsx_runtime_1.jsx)(ResponsiveNavLink_1["default"], Object.assign({
               method: "post",
-              href: "/",
+              href: route('logout'),
               as: "button"
             }, {
               children: "\u30ED\u30B0\u30A2\u30A6\u30C8"
@@ -5908,7 +5918,11 @@ function CreateLent(props) {
   }, {
     children: [(0, jsx_runtime_1.jsx)(inertia_react_1.Head, {
       title: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u767B\u9332"
-    }), (0, jsx_runtime_1.jsx)("div", Object.assign({
+    }), (0, jsx_runtime_1.jsx)("p", Object.assign({
+      className: "bg-white sm:px-6 lg:px-8"
+    }, {
+      children: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u3092\u767B\u9332\u3057\u305F\u65E5\u4ED8\u304B\u3089\u300C\u53D6\u308A\u7ACB\u3066\u9593\u9694\u300D\u3054\u3068\u306B\u8CB8\u4E3B\u306B\u50AC\u4FC3\u30E1\u30FC\u30EB\u304C\u9001\u4FE1\u3055\u308C\u307E\u3059\u3002"
+    })), (0, jsx_runtime_1.jsx)("div", Object.assign({
       className: "py-12 bg-white"
     }, {
       children: (0, jsx_runtime_1.jsxs)("div", Object.assign({
@@ -6167,8 +6181,11 @@ var Table_1 = __importDefault(__webpack_require__(/*! @/Components/Table */ "./r
 var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
 
 function Lent(props) {
-  var header_list = ["名前", "送信先アドレス", "貸した金額", "貸した日", "催促間隔", "", ""];
-  var lent_list = [["テスト太郎", "test@test.com", "1000", "2020/05/05", "3日毎"], ["テスト太郎", "test@test.com", "3000", "2020/05/09", "1日毎"]];
+  var header_list = ["名前", "送信先アドレス", "貸した金額", "貸した日", "催促間隔", "", ""]; // const lent_list = [
+  //     ["テスト太郎", "test@test.com", "1000", "2020/05/05", "3日毎"],
+  //     ["テスト太郎", "test@test.com", "3000", "2020/05/09", "1日毎"],
+  // ];
+
   return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({
     auth: props.auth,
     header: (0, jsx_runtime_1.jsx)("h2", Object.assign({
@@ -6193,7 +6210,7 @@ function Lent(props) {
           children: [(0, jsx_runtime_1.jsx)(Table_1["default"].TableHeader, {
             th: header_list
           }), (0, jsx_runtime_1.jsxs)(Table_1["default"].TableRow, Object.assign({
-            tds: lent_list
+            tds: props.lents
           }, {
             children: [(0, jsx_runtime_1.jsx)("td", Object.assign({
               className: "border text-center"

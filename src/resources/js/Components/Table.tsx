@@ -37,11 +37,13 @@ interface TableRow {
 }
 
 const TableRow = ({ tds, className, children }: TableRow) => {
-    const bodyItems = tds.map(td =>
-        <tr>
-            {td.map((row, index) =>
-                <td className={`px-4 py-2 border ` + className} key={index}>{row}</td>
-            )}
+    const bodyItems = tds.map((row, index) =>
+        <tr key={index}>
+            {Object.keys(row).map(function(key, i) {
+                return(
+                    <td className={`px-4 py-2 border ` + className} key={i}>{row[key]}</td>
+                );
+            })}
             {children}
         </tr>
     );

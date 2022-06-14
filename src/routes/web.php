@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Lent\LentController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +16,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
-Route::get('/', [AuthenticatedSessionController::class, 'create']);
-
-Route::get('/list', function () {
-    return Inertia::render('Lent/Lent');
-})->name('list');
-
-Route::get('/create', function () {
-    return Inertia::render('Lent/CreateLent');
-})->name('create');
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [LentController::class, 'index'])->name('list');
+});
 
 require __DIR__.'/auth.php';
