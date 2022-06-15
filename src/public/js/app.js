@@ -6181,11 +6181,30 @@ var Table_1 = __importDefault(__webpack_require__(/*! @/Components/Table */ "./r
 var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
 
 function Lent(props) {
-  var header_list = ["名前", "送信先アドレス", "貸した金額", "貸した日", "催促間隔", "", ""]; // const lent_list = [
-  //     ["テスト太郎", "test@test.com", "1000", "2020/05/05", "3日毎"],
-  //     ["テスト太郎", "test@test.com", "3000", "2020/05/09", "1日毎"],
-  // ];
-
+  var header_list = ["NO", "名前", "送信先アドレス", "貸した金額", "貸した日", "催促間隔", "", ""];
+  var lent_list = [];
+  props.lents.map(function (lent, index) {
+    return lent_list.push({
+      no: index + 1,
+      name: lent.name,
+      email: lent.email,
+      lendMoney: lent.lend_money + "円",
+      createdAt: lent.created_at,
+      interval: lent.interval + "日毎",
+      editBtn: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+        className: "m-2 bg-blue-600",
+        processing: false
+      }, {
+        children: "\u7DE8\u96C6"
+      })),
+      deleteBtn: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+        className: "m-2 bg-red-600",
+        processing: false
+      }, {
+        children: "\u56DE\u53CE\u6E08"
+      }))
+    });
+  });
   return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({
     auth: props.auth,
     header: (0, jsx_runtime_1.jsx)("h2", Object.assign({
@@ -6200,6 +6219,10 @@ function Lent(props) {
       className: "bg-white sm:px-6 lg:px-8"
     }, {
       children: "\u8A2D\u5B9A\u3057\u305F\u9593\u9694\u306719:00\u306B\u50AC\u4FC3\u30E1\u30FC\u30EB\u304C\u5C4A\u304D\u307E\u3059\u3002\u50AC\u4FC3\u30E1\u30FC\u30EB\u3092\u6B62\u3081\u308B\u306B\u306F\u3001\u56DE\u53CE\u6E08\u30DC\u30BF\u30F3\u3092\u62BC\u4E0B\u3057\u3066\u304F\u3060\u3055\u3044\u3002"
+    })), (0, jsx_runtime_1.jsx)("p", Object.assign({
+      className: "bg-white sm:px-6 lg:px-8"
+    }, {
+      children: "\u6700\u592710\u4EF6\u307E\u3067\u7121\u6599\u3067\u767B\u9332\u3067\u304D\u307E\u3059\u3002\u305D\u308C\u4EE5\u4E0A\u767B\u9332\u3057\u305F\u3044\u5834\u5408\u306F\u6709\u6599\u30D7\u30E9\u30F3\u306B\u3054\u767B\u9332\u304F\u3060\u3055\u3044\u3002\uFF08\u672A\u30EA\u30EA\u30FC\u30B9\uFF09"
     })), (0, jsx_runtime_1.jsx)("div", Object.assign({
       className: "py-12 bg-white"
     }, {
@@ -6209,29 +6232,9 @@ function Lent(props) {
         children: (0, jsx_runtime_1.jsxs)(Table_1["default"], {
           children: [(0, jsx_runtime_1.jsx)(Table_1["default"].TableHeader, {
             th: header_list
-          }), (0, jsx_runtime_1.jsxs)(Table_1["default"].TableRow, Object.assign({
-            tds: props.lents
-          }, {
-            children: [(0, jsx_runtime_1.jsx)("td", Object.assign({
-              className: "border text-center"
-            }, {
-              children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-                className: "m-2 bg-blue-600",
-                processing: false
-              }, {
-                children: "\u7DE8\u96C6"
-              }))
-            })), (0, jsx_runtime_1.jsx)("td", Object.assign({
-              className: "border text-center"
-            }, {
-              children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-                className: "m-2 bg-red-600",
-                processing: false
-              }, {
-                children: "\u56DE\u53CE\u6E08"
-              }))
-            }))]
-          }))]
+          }), (0, jsx_runtime_1.jsx)(Table_1["default"].TableRow, {
+            tds: lent_list
+          })]
         })
       }))
     }))]

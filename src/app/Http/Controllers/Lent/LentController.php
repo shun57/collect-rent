@@ -17,6 +17,6 @@ class LentController extends Controller
 
         $lents = $action($user);
 
-        return Inertia::render('Lent/Lent', ['lents' => $lents->all()]);
+        return Inertia::render('Lent/Lent', ['lents' => $lents->toArray()]);
     }
 }

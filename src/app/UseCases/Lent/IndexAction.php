@@ -12,6 +12,8 @@ class IndexAction
 {
     public function __invoke(User $user): Collection
     {
-        return Lent::where('user_id', '=', $user->id)->limit(10)->get();
+        return Lent::where('user_id', '=', $user->id)
+                    ->limit(10)
+                    ->get(['id', 'name', 'email', 'lend_money', 'created_at', 'interval']);
     }
 }
