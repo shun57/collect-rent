@@ -17,7 +17,7 @@ use Inertia\Inertia;
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', [LentController::class, 'index'])->name('list');
+    Route::get('/', [LentController::class, 'index'])->name('lent');
 });
 
 require __DIR__.'/auth.php';

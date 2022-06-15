@@ -29,7 +29,7 @@ export default function Authenticated({ auth, header, children }: Props) {
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink href={route('list')} active={route().current('list')}>
+                                <NavLink href={route('lent')} active={route().current('lent')}>
                                     取り立て一覧
                                 </NavLink>
                             </div>
@@ -99,7 +99,7 @@ export default function Authenticated({ auth, header, children }: Props) {
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                     <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink href={route('list')} active={route().current('list')}>
+                        <ResponsiveNavLink href={route('lent')} active={route().current('lent')}>
                             取り立て一覧
                         </ResponsiveNavLink>
                     </div>
