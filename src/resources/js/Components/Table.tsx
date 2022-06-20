@@ -31,7 +31,7 @@ const TableHeader = ({ th, className, children }: TableHeader) => {
 };
 
 interface TableRow {
-    tds: any;
+    tds: Array<object>;
     className?: string;
     children?: React.ReactNode;
 }
