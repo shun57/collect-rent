@@ -4945,8 +4945,8 @@ function Authenticated(_ref) {
               className: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
             }, {
               children: (0, jsx_runtime_1.jsx)(NavLink_1["default"], Object.assign({
-                href: route('list'),
-                active: route().current('list')
+                href: route('lent'),
+                active: route().current('lent')
               }, {
                 children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
               }))
@@ -5032,8 +5032,8 @@ function Authenticated(_ref) {
           className: "pt-2 pb-3 space-y-1"
         }, {
           children: (0, jsx_runtime_1.jsx)(ResponsiveNavLink_1["default"], Object.assign({
-            href: route('list'),
-            active: route().current('list')
+            href: route('lent'),
+            active: route().current('lent')
           }, {
             children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
           }))
@@ -6222,7 +6222,7 @@ function Lent(props) {
     })), (0, jsx_runtime_1.jsx)("p", Object.assign({
       className: "bg-white sm:px-6 lg:px-8"
     }, {
-      children: "\u6700\u592710\u4EF6\u307E\u3067\u7121\u6599\u3067\u767B\u9332\u3067\u304D\u307E\u3059\u3002\u305D\u308C\u4EE5\u4E0A\u767B\u9332\u3057\u305F\u3044\u5834\u5408\u306F\u6709\u6599\u30D7\u30E9\u30F3\u306B\u3054\u767B\u9332\u304F\u3060\u3055\u3044\u3002\uFF08\u672A\u30EA\u30EA\u30FC\u30B9\uFF09"
+      children: "\u6700\u592710\u4EF6\u307E\u3067\u7121\u6599\u3067\u767B\u9332\u3067\u304D\u307E\u3059\u3002\u305D\u308C\u4EE5\u4E0A\u767B\u9332\u3057\u305F\u3044\u5834\u5408\u306F\u6709\u6599\u30D7\u30E9\u30F3\u306B\u3054\u767B\u9332\u304F\u3060\u3055\u3044\uFF08\u672A\u30EA\u30EA\u30FC\u30B9\uFF09\u3002"
     })), (0, jsx_runtime_1.jsx)("div", Object.assign({
       className: "py-12 bg-white"
     }, {

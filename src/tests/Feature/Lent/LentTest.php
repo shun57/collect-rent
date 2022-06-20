@@ -10,16 +10,25 @@ use Tests\TestCase;
 class LentTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
      * @return void
      */
-    public function test_ログインして取り立て一覧画面を表示()
+    public function test_ログインして取り立て一覧画面を表示(): void
     {
         $user = User::factory()->create();
 
+        /** @var \Illuminate\Contracts\Auth\Authenticatable $user */
         $response = $this->actingAs($user)->get('/');
 
         $response->assertStatus(200);
+    }
+
+    /**
+     * @return void
+     */
+    public function test_未ログインの場合は取り立て一覧画面を表示できずエラー(): void
+    {
+        $response = $this->withoutMiddleware()->get('/');
+
+        $response->assertStatus(500);
     }
 }
