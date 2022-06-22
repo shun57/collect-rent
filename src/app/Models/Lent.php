@@ -29,4 +29,15 @@ class Lent extends Model
     protected $casts = [
         'created_at' => 'datetime:Y-m-d',
     ];
+
+    /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @param  \DateTimeInterface  $date
+     * @return string
+     */
+    protected function serializeDate($date)
+    {
+        return $date->format('Y-m-d');
+    }
 }

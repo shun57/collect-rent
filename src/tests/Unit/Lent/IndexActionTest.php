@@ -51,4 +51,18 @@ class IndexActionTest extends TestCase
 
         $this->assertCount(10, $user_lents($this->user)->toArray());
     }
+
+    /**
+     * @return void
+     */
+    public function test_ユーザーが渡されない場合はエラー(): void
+    {
+        $this->expectException(\TypeError::class);
+
+        $user = 'test';
+    
+        $user_lents = new IndexAction();
+
+        $user_lents($user)->toArray();
+    }
 }
