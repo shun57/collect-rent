@@ -8,14 +8,33 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\UseCases\Lent\IndexAction;
 use Inertia\Inertia;
+use Throwable;
+use Psr\Log\LoggerInterface;
 
 class LentController extends Controller
 {
+    /**
+     * @param LoggerInterface $logger
+     */
+    public function __construct(private LoggerInterface $logger)
+    {
+    }
+
+    /**
+     * @param Request $request
+     * @param IndexAction $action
+     * @return Inertia
+     */
     public function index(Request $request, IndexAction $action)
     {
         $user = $request->user();
 
-        $lents = $action($user);
+        try {
+            $lents = $action($user);
+        } catch (Throwable $e) {
+            $this->logger->error($e->getMessage());
+            abort(500);
+        }
 
         return Inertia::render('Lent/Lent', ['lents' => $lents->toArray()]);
     }
