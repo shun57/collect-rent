@@ -5851,6 +5851,48 @@ exports["default"] = VerifyEmail;
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Error/Error.tsx":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/Error/Error.tsx ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+function ErrorPage(_ref) {
+  var status = _ref.status;
+  var title = {
+    503: '503: Service Unavailable',
+    500: '500: Server Error',
+    404: '404: Page Not Found',
+    403: '403: Forbidden'
+  }[status];
+  var description = {
+    503: 'Sorry, we are doing some maintenance. Please check back soon.',
+    500: 'Whoops, something went wrong on our servers.',
+    404: 'Sorry, the page you are looking for could not be found.',
+    403: 'Sorry, you are forbidden from accessing this page.'
+  }[status];
+  return (0, jsx_runtime_1.jsxs)("div", {
+    children: [(0, jsx_runtime_1.jsx)("h1", {
+      children: title
+    }), (0, jsx_runtime_1.jsx)("div", {
+      children: description
+    })]
+  });
+}
+
+exports["default"] = ErrorPage;
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Lent/CreateLent.tsx":
 /*!************************************************!*\
   !*** ./resources/js/Pages/Lent/CreateLent.tsx ***!
@@ -59491,6 +59533,8 @@ var map = {
 	"./Auth/ResetPassword.tsx": "./resources/js/Pages/Auth/ResetPassword.tsx",
 	"./Auth/VerifyEmail": "./resources/js/Pages/Auth/VerifyEmail.tsx",
 	"./Auth/VerifyEmail.tsx": "./resources/js/Pages/Auth/VerifyEmail.tsx",
+	"./Error/Error": "./resources/js/Pages/Error/Error.tsx",
+	"./Error/Error.tsx": "./resources/js/Pages/Error/Error.tsx",
 	"./Lent/CreateLent": "./resources/js/Pages/Lent/CreateLent.tsx",
 	"./Lent/CreateLent.tsx": "./resources/js/Pages/Lent/CreateLent.tsx",
 	"./Lent/EditLent": "./resources/js/Pages/Lent/EditLent.tsx",
