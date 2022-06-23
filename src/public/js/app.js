@@ -4950,6 +4950,15 @@ function Authenticated(_ref) {
               }, {
                 children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
               }))
+            })), (0, jsx_runtime_1.jsx)("div", Object.assign({
+              className: "hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+            }, {
+              children: (0, jsx_runtime_1.jsx)(NavLink_1["default"], Object.assign({
+                href: route('lent.create'),
+                active: route().current('lent.create')
+              }, {
+                children: "\u53D6\u308A\u7ACB\u3066\u4F5C\u6210"
+              }))
             }))]
           })), (0, jsx_runtime_1.jsx)("div", Object.assign({
             className: "hidden sm:flex sm:items-center sm:ml-6"
@@ -5036,6 +5045,15 @@ function Authenticated(_ref) {
             active: route().current('lent')
           }, {
             children: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
+          }))
+        })), (0, jsx_runtime_1.jsx)("div", Object.assign({
+          className: "pt-2 pb-3 space-y-1"
+        }, {
+          children: (0, jsx_runtime_1.jsx)(ResponsiveNavLink_1["default"], Object.assign({
+            href: route('lent.create'),
+            active: route().current('lent.create')
+          }, {
+            children: "\u53D6\u308A\u7ACB\u3066\u4F5C\u6210"
           }))
         })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
           className: "pt-4 pb-1 border-t border-gray-200"
@@ -5929,11 +5947,15 @@ var ValidationErrors_1 = __importDefault(__webpack_require__(/*! @/Components/Va
 var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
 function CreateLent(props) {
+  var intervals = props.types.map(function (x) {
+    return x + "日間";
+  });
+
   var _ref = (0, inertia_react_1.useForm)({
     name: "",
     email: "",
     money: 0,
-    interval: ["1日間", "3日間", "7日間"]
+    interval: intervals
   }),
       data = _ref.data,
       setData = _ref.setData,
@@ -5963,7 +5985,11 @@ function CreateLent(props) {
     }), (0, jsx_runtime_1.jsx)("p", Object.assign({
       className: "bg-white sm:px-6 lg:px-8"
     }, {
-      children: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u3092\u767B\u9332\u3057\u305F\u65E5\u4ED8\u304B\u3089\u300C\u53D6\u308A\u7ACB\u3066\u9593\u9694\u300D\u3054\u3068\u306B\u8CB8\u4E3B\u306B\u50AC\u4FC3\u30E1\u30FC\u30EB\u304C\u9001\u4FE1\u3055\u308C\u307E\u3059\u3002"
+      children: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u3092\u767B\u9332\u3057\u305F\u65E5\u4ED8\u304B\u3089\u300C\u53D6\u308A\u7ACB\u3066\u983B\u5EA6\u300D\u3054\u3068\u306B\u8CB8\u4E3B\u306B\u50AC\u4FC3\u30E1\u30FC\u30EB\u304C\u9001\u4FE1\u3055\u308C\u307E\u3059\u3002"
+    })), (0, jsx_runtime_1.jsx)("p", Object.assign({
+      className: "bg-white sm:px-6 lg:px-8"
+    }, {
+      children: "\u53D6\u308A\u7ACB\u3066\u91D1\u984D\u306F10,000\u5186\u4EE5\u4E0B\u3067\u306E\u307F\u8A2D\u5B9A\u304C\u53EF\u80FD\u3067\u3059\u3002"
     })), (0, jsx_runtime_1.jsx)("div", Object.assign({
       className: "py-12 bg-white"
     }, {

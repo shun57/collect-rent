@@ -33,6 +33,11 @@ export default function Authenticated({ auth, header, children }: Props) {
                                     取り立て一覧
                                 </NavLink>
                             </div>
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('lent.create')} active={route().current('lent.create')}>
+                                    取り立て作成
+                                </NavLink>
+                            </div>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -101,6 +106,11 @@ export default function Authenticated({ auth, header, children }: Props) {
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('lent')} active={route().current('lent')}>
                             取り立て一覧
+                        </ResponsiveNavLink>
+                    </div>
+                    <div className="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink href={route('lent.create')} active={route().current('lent.create')}>
+                            取り立て作成
                         </ResponsiveNavLink>
                     </div>
 

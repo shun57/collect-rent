@@ -10,6 +10,7 @@ use App\UseCases\Lent\IndexAction;
 use Inertia\Inertia;
 use Throwable;
 use Psr\Log\LoggerInterface;
+use App\Enums\LentFrequencyType;
 
 class LentController extends Controller
 {
@@ -37,5 +38,10 @@ class LentController extends Controller
         }
 
         return Inertia::render('Lent/Lent', ['lents' => $lents->toArray()]);
+    }
+
+    public function create()
+    {
+        return Inertia::render('Lent/CreateLent', ['types' => LentFrequencyType::getValues()]);
     }
 }

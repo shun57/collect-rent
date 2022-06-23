@@ -10,11 +10,12 @@ import { Head, useForm } from "@inertiajs/inertia-react";
 declare var route;
 
 export default function CreateLent(props) {
+    const intervals = props.types.map(x => x + "日間");
     const { data, setData, post, processing, errors } = useForm({
         name: "",
         email: "",
         money: 0,
-        interval: ["1日間", "3日間", "7日間"],
+        interval: intervals,
     });
 
     const onHandleChange = (
@@ -45,7 +46,8 @@ export default function CreateLent(props) {
         >
             <Head title="取り立て情報登録" />
 
-            <p className="bg-white sm:px-6 lg:px-8">取り立て情報を登録した日付から「取り立て間隔」ごとに貸主に催促メールが送信されます。</p>
+            <p className="bg-white sm:px-6 lg:px-8">取り立て情報を登録した日付から「取り立て頻度」ごとに貸主に催促メールが送信されます。</p>
+            <p className="bg-white sm:px-6 lg:px-8">金額は10,000円以下でのみ設定が可能です。</p>
 
             <div className="py-12 bg-white">
                 <div className="mx-auto sm:px-6 lg:px-8">
