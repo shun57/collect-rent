@@ -36,3 +36,9 @@ $ php artisan config:clear
 $ php artisan route:clear
 $ php artisan view:clear
 ```
+
+## Larastan
+
+```
+$ ./vendor/bin/phpstan analyse
+```
