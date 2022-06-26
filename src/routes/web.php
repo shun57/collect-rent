@@ -19,6 +19,7 @@ use Inertia\Inertia;
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [LentController::class, 'index'])->name('lent');
     Route::get('/create', [LentController::class, 'create'])->name('lent.create');
+    Route::post('/store', [LentController::class, 'store']);
 });
 
 require __DIR__.'/auth.php';

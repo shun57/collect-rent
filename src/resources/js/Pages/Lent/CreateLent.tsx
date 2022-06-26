@@ -56,6 +56,7 @@ export default function CreateLent(props) {
                     <form onSubmit={submit}>
                         <div>
                             <Label forInput="name" value="貸主名" />
+                            <span className="text-red-600 text-xs">  ※必須</span>
 
                             <Input
                                 type="text"
@@ -75,6 +76,7 @@ export default function CreateLent(props) {
                                 forInput="email"
                                 value="貸主メールアドレス"
                             />
+                            <span className="text-red-600 text-xs"> ※必須</span>
 
                             <Input
                                 type="email"
@@ -90,6 +92,7 @@ export default function CreateLent(props) {
 
                         <div className="mt-4">
                             <Label forInput="money" value="貨した金額" />
+                            <span className="text-red-600 text-xs"> ※必須</span>
 
                             <Input
                                 type="number"

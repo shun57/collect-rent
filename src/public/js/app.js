@@ -4571,11 +4571,13 @@ function Input(_ref) {
       type = _ref$type === void 0 ? 'text' : _ref$type,
       name = _ref.name,
       value = _ref.value,
+      min = _ref.min,
       max = _ref.max,
       className = _ref.className,
       autoComplete = _ref.autoComplete,
       required = _ref.required,
       isFocused = _ref.isFocused,
+      placeholder = _ref.placeholder,
       handleChange = _ref.handleChange;
   var input = (0, react_1.useRef)(null);
   (0, react_1.useEffect)(function () {
@@ -4592,11 +4594,13 @@ function Input(_ref) {
       type: type,
       name: name,
       value: value,
+      min: min,
       max: max,
       className: "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm " + className,
       ref: input,
       autoComplete: autoComplete,
       required: required,
+      placeholder: placeholder,
       onChange: function onChange(e) {
         return handleChange(e);
       }
@@ -4630,7 +4634,7 @@ function Label(_ref) {
       children = _ref.children;
   return (0, jsx_runtime_1.jsx)("label", Object.assign({
     htmlFor: forInput,
-    className: "block font-medium text-sm text-gray-700 " + className
+    className: "font-medium text-sm text-gray-700 " + className
   }, {
     children: value ? value : children
   }));
@@ -5954,7 +5958,7 @@ function CreateLent(props) {
   var _ref = (0, inertia_react_1.useForm)({
     name: "",
     email: "",
-    money: 0,
+    money: 100,
     interval: intervals
   }),
       data = _ref.data,
@@ -5989,7 +5993,7 @@ function CreateLent(props) {
     })), (0, jsx_runtime_1.jsx)("p", Object.assign({
       className: "bg-white sm:px-6 lg:px-8"
     }, {
-      children: "\u53D6\u308A\u7ACB\u3066\u91D1\u984D\u306F10,000\u5186\u4EE5\u4E0B\u3067\u306E\u307F\u8A2D\u5B9A\u304C\u53EF\u80FD\u3067\u3059\u3002"
+      children: "\u91D1\u984D\u306F10,000\u5186\u4EE5\u4E0B\u3067\u306E\u307F\u8A2D\u5B9A\u304C\u53EF\u80FD\u3067\u3059\u3002"
     })), (0, jsx_runtime_1.jsx)("div", Object.assign({
       className: "py-12 bg-white"
     }, {
@@ -6005,7 +6009,11 @@ function CreateLent(props) {
             children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
               forInput: "name",
               value: "\u8CB8\u4E3B\u540D"
-            }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+            }), (0, jsx_runtime_1.jsx)("span", Object.assign({
+              className: "text-red-600 text-xs"
+            }, {
+              children: "  \u203B\u5FC5\u9808"
+            })), (0, jsx_runtime_1.jsx)(Input_1["default"], {
               type: "text",
               name: "name",
               value: data.name,
@@ -6013,7 +6021,8 @@ function CreateLent(props) {
               autoComplete: "name",
               isFocused: true,
               handleChange: onHandleChange,
-              required: true
+              required: true,
+              placeholder: "\u501F\u7167 \u592A\u90CE"
             })]
           }), (0, jsx_runtime_1.jsxs)("div", Object.assign({
             className: "mt-4"
@@ -6021,14 +6030,19 @@ function CreateLent(props) {
             children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
               forInput: "email",
               value: "\u8CB8\u4E3B\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"
-            }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+            }), (0, jsx_runtime_1.jsx)("span", Object.assign({
+              className: "text-red-600 text-xs"
+            }, {
+              children: " \u203B\u5FC5\u9808"
+            })), (0, jsx_runtime_1.jsx)(Input_1["default"], {
               type: "email",
               name: "email",
               value: data.email,
               className: "mt-1 block w-full",
               autoComplete: "username",
               handleChange: onHandleChange,
-              required: true
+              required: true,
+              placeholder: "kariteru-tarou@test.com"
             })]
           })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
             className: "mt-4"
@@ -6036,10 +6050,15 @@ function CreateLent(props) {
             children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
               forInput: "money",
               value: "\u8CA8\u3057\u305F\u91D1\u984D"
-            }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+            }), (0, jsx_runtime_1.jsx)("span", Object.assign({
+              className: "text-red-600 text-xs"
+            }, {
+              children: " \u203B\u5FC5\u9808"
+            })), (0, jsx_runtime_1.jsx)(Input_1["default"], {
               type: "number",
               name: "money",
               value: data.money,
+              min: 1,
               max: 10000,
               className: "mt-1 block w-full",
               handleChange: onHandleChange,

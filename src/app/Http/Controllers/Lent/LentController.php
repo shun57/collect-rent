@@ -44,4 +44,13 @@ class LentController extends Controller
     {
         return Inertia::render('Lent/CreateLent', ['types' => LentFrequencyType::getValues()]);
     }
+
+    /**
+     * @param Request $request
+     * @param storeAction $action
+     * @return void
+     */
+    public function store(Request $request, storeAction $action)
+    {
+    }
 }
