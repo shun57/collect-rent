@@ -9,7 +9,8 @@ export default {
     type: 'text',
     name: 'text',
     value: 'text',
-    required: false
+    required: false,
+    placeholder: 'sample'
   }
 };
 

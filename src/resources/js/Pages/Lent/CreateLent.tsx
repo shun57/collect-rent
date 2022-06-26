@@ -14,7 +14,7 @@ export default function CreateLent(props) {
     const { data, setData, post, processing, errors } = useForm({
         name: "",
         email: "",
-        money: 0,
+        money: 100,
         interval: intervals,
     });
 
@@ -66,6 +66,7 @@ export default function CreateLent(props) {
                                 isFocused={true}
                                 handleChange={onHandleChange}
                                 required
+                                placeholder="借照 太郎"
                             />
                         </div>
 
@@ -83,6 +84,7 @@ export default function CreateLent(props) {
                                 autoComplete="username"
                                 handleChange={onHandleChange}
                                 required
+                                placeholder="kariteru-tarou@test.com"
                             />
                         </div>
 
@@ -93,6 +95,7 @@ export default function CreateLent(props) {
                                 type="number"
                                 name="money"
                                 value={data.money}
+                                min={1}
                                 max={10000}
                                 className="mt-1 block w-full"
                                 handleChange={onHandleChange}
