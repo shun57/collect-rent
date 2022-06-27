@@ -15,7 +15,7 @@ export default function CreateLent(props) {
         name: "",
         email: "",
         money: 100,
-        interval: intervals,
+        interval: props.types,
     });
 
     const onHandleChange = (
@@ -110,7 +110,8 @@ export default function CreateLent(props) {
                             <Label forInput="interval" value="取り立て頻度" />
 
                             <SelectBox
-                                options={data.interval}
+                                options={intervals}
+                                values={data.interval}
                                 handleChange={onHandleChange}
                             />
                         </div>

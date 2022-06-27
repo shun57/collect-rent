@@ -128,6 +128,7 @@ return [
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeは、有効なURL形式で指定してください。',
     'uuid'                 => ':attributeは、有効なUUIDでなければなりません。',
+    'enum_value'           => ':attributeに無効な値が入力されました。',
     'custom'               => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
@@ -136,7 +137,10 @@ return [
 
     'attributes' => [
         'email' => 'メールアドレス',
-        'password' => 'パスワード'
+        'password' => 'パスワード',
+        'name' => '名前',
+        'money' => '金額',
+        'interval' => '取り立て頻度'
     ],
 
 ];

@@ -85,6 +85,7 @@ export default function  EditLent(props) {
 
                     <SelectBox
                         options={data.interval}
+                        values={data.interval}
                         handleChange={onHandleChange}
                     />
                 </div>

@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Lent;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Lent\StoreRequest;
 use App\Http\Controllers\Controller;
 use App\UseCases\Lent\IndexAction;
+use App\UseCases\Lent\storeAction;
 use Inertia\Inertia;
 use Throwable;
 use Psr\Log\LoggerInterface;
@@ -46,11 +48,12 @@ class LentController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param StoreRequest $request
      * @param storeAction $action
      * @return void
      */
-    public function store(Request $request, storeAction $action)
+    public function store(StoreRequest $request, storeAction $action)
     {
+        dd($request);
     }
 }

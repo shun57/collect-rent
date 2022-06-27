@@ -11,7 +11,7 @@ use BenSampo\Enum\Enum;
  */
 final class LentFrequencyType extends Enum
 {
-    const EveryDay =   1;
-    const PerTreeDay =   3;
+    const EveryDay = 1;
+    const PerTreeDay = 3;
     const Weekly = 7;
 }

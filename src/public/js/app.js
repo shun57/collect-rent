@@ -4734,13 +4734,14 @@ var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules
 
 function SelectBox(_ref) {
   var options = _ref.options,
+      values = _ref.values,
       handleChange = _ref.handleChange;
   var option = options.map(function (option, index) {
     return (0, jsx_runtime_1.jsx)("option", Object.assign({
-      value: index
+      value: values[index]
     }, {
       children: option
-    }));
+    }), index);
   });
   return (0, jsx_runtime_1.jsx)("div", {
     children: (0, jsx_runtime_1.jsx)("select", Object.assign({
@@ -5959,7 +5960,7 @@ function CreateLent(props) {
     name: "",
     email: "",
     money: 100,
-    interval: intervals
+    interval: props.types
   }),
       data = _ref.data,
       setData = _ref.setData,
@@ -6071,7 +6072,8 @@ function CreateLent(props) {
               forInput: "interval",
               value: "\u53D6\u308A\u7ACB\u3066\u983B\u5EA6"
             }), (0, jsx_runtime_1.jsx)(SelectBox_1["default"], {
-              options: data.interval,
+              options: intervals,
+              values: data.interval,
               handleChange: onHandleChange
             })]
           })), (0, jsx_runtime_1.jsx)("div", Object.assign({
@@ -6218,6 +6220,7 @@ function EditLent(props) {
           value: "\u53D6\u308A\u7ACB\u3066\u983B\u5EA6"
         }), (0, jsx_runtime_1.jsx)(SelectBox_1["default"], {
           options: data.interval,
+          values: data.interval,
           handleChange: onHandleChange
         })]
       })), (0, jsx_runtime_1.jsx)("div", Object.assign({

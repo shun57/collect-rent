@@ -1,13 +1,15 @@
+import { keyBy } from "lodash";
 import React from "react";
 
 interface Props {
     options: Array<string>;
+    values: Array<number>;
     handleChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 
-export default function SelectBox({ options, handleChange }: Props) {
+export default function SelectBox({ options, values, handleChange }: Props) {
     const option = options.map((option, index) => (
-        <option value={index}>{option}</option>
+        <option key={index} value={values[index]}>{option}</option>
     ));
     return (
         <div>
