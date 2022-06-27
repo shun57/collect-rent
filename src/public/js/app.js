@@ -5973,7 +5973,7 @@ function CreateLent(props) {
 
   var submit = function submit(e) {
     e.preventDefault();
-    post(route("register"));
+    post(route("lent.store"));
   };
 
   return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({

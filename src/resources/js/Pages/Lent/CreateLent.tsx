@@ -32,7 +32,7 @@ export default function CreateLent(props) {
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        post(route("register"));
+        post(route("lent.store"));
     };
 
     return (

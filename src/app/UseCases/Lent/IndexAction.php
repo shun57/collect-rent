@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Collection;
 
 class IndexAction
 {
+    /**
+     * @param User $user
+     * @return Collection
+     */
     public function __invoke(User $user): Collection
     {
         return Lent::where('user_id', '=', $user->id)
