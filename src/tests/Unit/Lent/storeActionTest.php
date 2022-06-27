@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit\Lent;
 
 use Tests\TestCase;
@@ -44,7 +46,7 @@ class storeActionTest extends TestCase
      */
     public function test_10件作成済みの場合に取り立て情報を作成しようとするとエラー(): void
     {
-        $this->expectException(Exception::class);
+        $this->expectException(\Exception::class);
 
         Lent::factory()->count(10)->create([
             'user_id' => $this->user->id
