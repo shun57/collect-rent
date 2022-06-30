@@ -10,13 +10,19 @@ use Illuminate\Database\Eloquent\Collection;
 
 class IndexAction
 {
+    private $lent;
+
+    public function __construct(Lent $lent)
+    {
+        $this->lent = $lent;
+    }
     /**
      * @param User $user
      * @return Collection
      */
     public function __invoke(User $user): Collection
     {
-        return Lent::where('user_id', '=', $user->id)
+        return $this->lent->where('user_id', '=', $user->id)
                     ->limit(config('const.lentListLimit'))
                     ->get(['id', 'name', 'email', 'lend_money', 'created_at', 'interval']);
     }

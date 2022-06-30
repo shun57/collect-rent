@@ -12,11 +12,13 @@ use App\UseCases\Lent\IndexAction;
 class IndexActionTest extends TestCase
 {
     private $user;
+    private $lent;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->user = User::factory()->create();
+        $this->lent = new Lent();
     }
 
     /**
@@ -30,11 +32,10 @@ class IndexActionTest extends TestCase
 
         $lents = $lents->map(function ($lent) {
             $lent = $lent->only(['id', 'name', 'email', 'lend_money', 'created_at', 'interval']);
-            $lent['created_at'] = $lent['created_at']->toDateString();
             return $lent;
         });
     
-        $action = new IndexAction();
+        $action = new IndexAction($this->lent);
         $user_lents = $action($this->user)->toArray();
 
         $this->assertEquals($lents->toArray(), $user_lents);
@@ -49,7 +50,7 @@ class IndexActionTest extends TestCase
             'user_id' => $this->user->id
         ]);
     
-        $user_lents = new IndexAction();
+        $user_lents = new IndexAction($this->lent);
 
         $this->assertCount(10, $user_lents($this->user)->toArray());
     }
@@ -63,7 +64,7 @@ class IndexActionTest extends TestCase
 
         $user = 'test';
     
-        $user_lents = new IndexAction();
+        $user_lents = new IndexAction($this->lent);
 
         $user_lents($user)->toArray();
     }
