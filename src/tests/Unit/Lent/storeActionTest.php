@@ -27,7 +27,7 @@ class storeActionTest extends TestCase
         $params = [
             'name' => 'テスト太郎',
             'email' => 'test@test.com',
-            'money' => 100,
+            'lend_money' => 100,
             'interval' => 1
         ];
 
@@ -38,7 +38,7 @@ class storeActionTest extends TestCase
         $params['user_id'] = $this->user->id;
 
         $this->assertDatabaseCount('lents', 1);
-        $this->assertDatabaseHas('users', $params);
+        $this->assertDatabaseHas('lents', $params);
     }
 
     /**
@@ -55,7 +55,7 @@ class storeActionTest extends TestCase
         $params = [
             'name' => 'テスト太郎',
             'email' => 'test@test.com',
-            'money' => 100,
+            'lend_money' => 100,
             'interval' => 1
         ];
 

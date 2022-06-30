@@ -9,6 +9,10 @@ use App\Models\Lent;
 
 class storeAction
 {
+    public function __construct()
+    {
+    }
+
     /**
      * @param User $user
      * @param array $params
@@ -16,6 +20,8 @@ class storeAction
      */
     public function __invoke(User $user, array $params): void
     {
-        // return Lent::where('user_id', '=', $user->id);
+        // TODO：10件以上の場合はエラーを返す
+
+        $user->lents()->create($params);
     }
 }

@@ -4733,7 +4733,9 @@ Object.defineProperty(exports, "__esModule", ({
 var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 function SelectBox(_ref) {
-  var options = _ref.options,
+  var name = _ref.name,
+      options = _ref.options,
+      value = _ref.value,
       values = _ref.values,
       handleChange = _ref.handleChange;
   var option = options.map(function (option, index) {
@@ -4745,7 +4747,9 @@ function SelectBox(_ref) {
   });
   return (0, jsx_runtime_1.jsx)("div", {
     children: (0, jsx_runtime_1.jsx)("select", Object.assign({
+      name: name,
       className: "form-select appearance-none border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block w-full px-3 py-1.5",
+      value: value,
       onChange: function onChange(e) {
         return handleChange(e);
       }
@@ -5959,8 +5963,8 @@ function CreateLent(props) {
   var _ref = (0, inertia_react_1.useForm)({
     name: "",
     email: "",
-    money: 100,
-    interval: props.types
+    lend_money: 100,
+    interval: "1"
   }),
       data = _ref.data,
       setData = _ref.setData,
@@ -6057,8 +6061,8 @@ function CreateLent(props) {
               children: " \u203B\u5FC5\u9808"
             })), (0, jsx_runtime_1.jsx)(Input_1["default"], {
               type: "number",
-              name: "money",
-              value: data.money,
+              name: "lend_money",
+              value: data.lend_money,
               min: 1,
               max: 10000,
               className: "mt-1 block w-full",
@@ -6072,8 +6076,10 @@ function CreateLent(props) {
               forInput: "interval",
               value: "\u53D6\u308A\u7ACB\u3066\u983B\u5EA6"
             }), (0, jsx_runtime_1.jsx)(SelectBox_1["default"], {
+              name: "interval",
               options: intervals,
-              values: data.interval,
+              value: data.interval,
+              values: props.types,
               handleChange: onHandleChange
             })]
           })), (0, jsx_runtime_1.jsx)("div", Object.assign({
@@ -6132,11 +6138,15 @@ var ValidationErrors_1 = __importDefault(__webpack_require__(/*! @/Components/Va
 var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
 function EditLent(props) {
+  var intervals = props.types.map(function (x) {
+    return x + "日間";
+  });
+
   var _ref = (0, inertia_react_1.useForm)({
     name: '',
     email: '',
     money: 0,
-    interval: []
+    interval: "1"
   }),
       data = _ref.data,
       setData = _ref.setData,
@@ -6219,8 +6229,10 @@ function EditLent(props) {
           forInput: "interval",
           value: "\u53D6\u308A\u7ACB\u3066\u983B\u5EA6"
         }), (0, jsx_runtime_1.jsx)(SelectBox_1["default"], {
-          options: data.interval,
-          values: data.interval,
+          name: "interval",
+          options: intervals,
+          value: data.interval,
+          values: props.types,
           handleChange: onHandleChange
         })]
       })), (0, jsx_runtime_1.jsx)("div", Object.assign({

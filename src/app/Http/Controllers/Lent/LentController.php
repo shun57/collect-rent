@@ -54,6 +54,15 @@ class LentController extends Controller
      */
     public function store(StoreRequest $request, storeAction $action)
     {
-        dd($request);
+        $user = $request->user();
+        $params = $request->input();
+
+        dd($params);
+        try {
+            $action($user, $params);
+        } catch (Throwable $e) {
+            $this->logger->error($e->getMessage());
+            abort(500);
+        }
     }
 }

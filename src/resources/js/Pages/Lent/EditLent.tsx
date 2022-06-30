@@ -10,15 +10,16 @@ import { Head, useForm } from '@inertiajs/inertia-react';
 declare var route;
 
 export default function  EditLent(props) {
+    const intervals = props.types.map(x => x + "日間");
     const { data, setData, post, processing, errors } = useForm({
         name: '',
         email: '',
-        money: 0,
-        interval: [],
+        lend_money: 0,
+        interval: "1",
     });
 
     const onHandleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
-        setData(event.target.name as "email" | "money" | "name" | "interval", event.target.value);
+        setData(event.target.name as "email" | "lend_money" | "name" | "interval", event.target.value);
     };
 
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -67,12 +68,12 @@ export default function  EditLent(props) {
                 </div>
 
                 <div className="mt-4">
-                    <Label forInput="money" value="貨した金額" />
+                    <Label forInput="lend_money" value="貨した金額" />
 
                     <Input
                         type="number"
-                        name="money"
-                        value={data.money}
+                        name="lend_money"
+                        value={data.lend_money}
                         max={10000}
                         className="mt-1 block w-full"
                         handleChange={onHandleChange}
@@ -84,8 +85,10 @@ export default function  EditLent(props) {
                     <Label forInput="interval" value="取り立て頻度" />
 
                     <SelectBox
-                        options={data.interval}
-                        values={data.interval}
+                        name="interval"
+                        options={intervals}
+                        value={data.interval}
+                        values={props.types}
                         handleChange={onHandleChange}
                     />
                 </div>

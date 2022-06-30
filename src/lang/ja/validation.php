@@ -139,7 +139,7 @@ return [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'name' => '名前',
-        'money' => '金額',
+        'lend_money' => '貸した金額',
         'interval' => '取り立て頻度'
     ],
 

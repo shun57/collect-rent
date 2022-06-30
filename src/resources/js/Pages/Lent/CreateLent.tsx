@@ -14,8 +14,8 @@ export default function CreateLent(props) {
     const { data, setData, post, processing, errors } = useForm({
         name: "",
         email: "",
-        money: 100,
-        interval: props.types,
+        lend_money: 100,
+        interval: "1",
     });
 
     const onHandleChange = (
@@ -24,7 +24,7 @@ export default function CreateLent(props) {
             | React.ChangeEvent<HTMLSelectElement>
     ) => {
         setData(
-            event.target.name as "email" | "money" | "name" | "interval",
+            event.target.name as "email" | "lend_money" | "name" | "interval",
             event.target.value
         );
     };
@@ -91,13 +91,13 @@ export default function CreateLent(props) {
                         </div>
 
                         <div className="mt-4">
-                            <Label forInput="money" value="貨した金額" />
+                            <Label forInput="lend_money" value="貨した金額" />
                             <span className="text-red-600 text-xs"> ※必須</span>
 
                             <Input
                                 type="number"
-                                name="money"
-                                value={data.money}
+                                name="lend_money"
+                                value={data.lend_money}
                                 min={1}
                                 max={10000}
                                 className="mt-1 block w-full"
@@ -110,8 +110,10 @@ export default function CreateLent(props) {
                             <Label forInput="interval" value="取り立て頻度" />
 
                             <SelectBox
+                                name="interval"
                                 options={intervals}
-                                values={data.interval}
+                                value={data.interval}
+                                values={props.types}
                                 handleChange={onHandleChange}
                             />
                         </div>
