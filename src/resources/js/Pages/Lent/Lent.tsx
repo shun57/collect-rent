@@ -1,8 +1,9 @@
 import React from 'react';
 import Authenticated from '@/Layouts/Authenticated';
-import { Head } from '@inertiajs/inertia-react';
+import { Head, usePage } from '@inertiajs/inertia-react';
 import Table from '@/Components/Table';
 import Button from '@/Components/Button';
+import FlashMessage from '@/Components/FlashMessage';
 
 export default function Lent(props) {
     interface Lent {
@@ -31,12 +32,17 @@ export default function Lent(props) {
         })
     );
 
+    const { flash } : any = usePage().props
+
     return (
         <Authenticated
             auth={props.auth}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">取り立て一覧</h2>}
         >
             <Head title="取り立て一覧" />
+
+            <FlashMessage className="bg-green-100 border-green-500 text-green-700" message={flash.success} />
+            <FlashMessage className="bg-red-100 border-red-500 text-red-700" message={flash.fail} />
 
             <p className="bg-white sm:px-6 lg:px-8">設定した間隔で19:00に催促メールが届きます。催促メールを止めるには、回収済ボタンを押下してください。</p>
             <p className="bg-white sm:px-6 lg:px-8">最大10件まで無料で登録できます。それ以上登録したい場合は有料プランにご登録ください（未リリース）。</p>

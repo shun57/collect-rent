@@ -4549,6 +4549,44 @@ exports["default"] = Dropdown;
 
 /***/ }),
 
+/***/ "./resources/js/Components/FlashMessage.tsx":
+/*!**************************************************!*\
+  !*** ./resources/js/Components/FlashMessage.tsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+var jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+function FlashMessage(_ref) {
+  var message = _ref.message,
+      className = _ref.className;
+  return (0, jsx_runtime_1.jsx)("div", Object.assign({
+    className: 'bg-white'
+  }, {
+    children: message && (0, jsx_runtime_1.jsx)("div", Object.assign({
+      className: "border py-3 sm:px-6 lg:px-8 sm:mx-6 lg:mx-8 rounded " + className,
+      role: "alert"
+    }, {
+      children: (0, jsx_runtime_1.jsx)("p", Object.assign({
+        className: "text-sm"
+      }, {
+        children: message
+      }))
+    }))
+  }));
+}
+
+exports["default"] = FlashMessage;
+
+/***/ }),
+
 /***/ "./resources/js/Components/Input.tsx":
 /*!*******************************************!*\
   !*** ./resources/js/Components/Input.tsx ***!
@@ -6053,7 +6091,7 @@ function CreateLent(props) {
             className: "mt-4"
           }, {
             children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
-              forInput: "money",
+              forInput: "lend_money",
               value: "\u8CA8\u3057\u305F\u91D1\u984D"
             }), (0, jsx_runtime_1.jsx)("span", Object.assign({
               className: "text-red-600 text-xs"
@@ -6145,7 +6183,7 @@ function EditLent(props) {
   var _ref = (0, inertia_react_1.useForm)({
     name: '',
     email: '',
-    money: 0,
+    lend_money: 0,
     interval: "1"
   }),
       data = _ref.data,
@@ -6211,12 +6249,12 @@ function EditLent(props) {
         className: "mt-4"
       }, {
         children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
-          forInput: "money",
+          forInput: "lend_money",
           value: "\u8CA8\u3057\u305F\u91D1\u984D"
         }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
           type: "number",
-          name: "money",
-          value: data.money,
+          name: "lend_money",
+          value: data.lend_money,
           max: 10000,
           className: "mt-1 block w-full",
           handleChange: onHandleChange,
@@ -6282,6 +6320,8 @@ var Table_1 = __importDefault(__webpack_require__(/*! @/Components/Table */ "./r
 
 var Button_1 = __importDefault(__webpack_require__(/*! @/Components/Button */ "./resources/js/Components/Button.tsx"));
 
+var FlashMessage_1 = __importDefault(__webpack_require__(/*! @/Components/FlashMessage */ "./resources/js/Components/FlashMessage.tsx"));
+
 function Lent(props) {
   var header_list = ["NO", "名前", "送信先アドレス", "貸した金額", "貸した日", "催促間隔", "", ""];
   var lent_list = [];
@@ -6307,6 +6347,7 @@ function Lent(props) {
       }))
     });
   });
+  var flash = (0, inertia_react_1.usePage)().props.flash;
   return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({
     auth: props.auth,
     header: (0, jsx_runtime_1.jsx)("h2", Object.assign({
@@ -6317,6 +6358,12 @@ function Lent(props) {
   }, {
     children: [(0, jsx_runtime_1.jsx)(inertia_react_1.Head, {
       title: "\u53D6\u308A\u7ACB\u3066\u4E00\u89A7"
+    }), (0, jsx_runtime_1.jsx)(FlashMessage_1["default"], {
+      className: "bg-green-100 border-green-500 text-green-700",
+      message: flash.success
+    }), (0, jsx_runtime_1.jsx)(FlashMessage_1["default"], {
+      className: "bg-red-100 border-red-500 text-red-700",
+      message: flash.fail
     }), (0, jsx_runtime_1.jsx)("p", Object.assign({
       className: "bg-white sm:px-6 lg:px-8"
     }, {

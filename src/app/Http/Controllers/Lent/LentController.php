@@ -13,6 +13,7 @@ use Inertia\Inertia;
 use Throwable;
 use Psr\Log\LoggerInterface;
 use App\Enums\LentFrequencyType;
+use App\Http\Controllers\Lent\Exceptions\StoreLimitOveredException;
 
 class LentController extends Controller
 {
@@ -57,12 +58,13 @@ class LentController extends Controller
         $user = $request->user();
         $params = $request->input();
 
-        dd($params);
         try {
             $action($user, $params);
-        } catch (Throwable $e) {
-            $this->logger->error($e->getMessage());
-            abort(500);
+        } catch (StoreLimitOveredException $e) {
+            $this->logger->error($e);
+            return redirect()->route('lent')->with('fail', $e->getMessage());
         }
+
+        return redirect()->route('lent')->with('success', '取り立て情報を登録しました！');
     }
 }
