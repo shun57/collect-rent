@@ -6181,10 +6181,10 @@ function EditLent(props) {
   });
 
   var _ref = (0, inertia_react_1.useForm)({
-    name: '',
-    email: '',
-    lend_money: 0,
-    interval: "1"
+    name: props.lent.data.name,
+    email: props.lent.data.email,
+    lend_money: props.lent.data.lend_money,
+    interval: props.lent.data.interval
   }),
       data = _ref.data,
       setData = _ref.setData,
@@ -6198,7 +6198,7 @@ function EditLent(props) {
 
   var submit = function submit(e) {
     e.preventDefault();
-    post(route('register'));
+    post(route("lent.update"));
   };
 
   return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({
@@ -6206,83 +6206,103 @@ function EditLent(props) {
     header: (0, jsx_runtime_1.jsx)("h2", Object.assign({
       className: "font-semibold text-xl text-gray-800 leading-tight"
     }, {
-      children: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u4F5C\u6210"
+      children: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u7DE8\u96C6"
     }))
   }, {
     children: [(0, jsx_runtime_1.jsx)(inertia_react_1.Head, {
-      title: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u767B\u9332"
-    }), (0, jsx_runtime_1.jsx)(ValidationErrors_1["default"], {
-      errors: errors
-    }), (0, jsx_runtime_1.jsxs)("form", Object.assign({
-      onSubmit: submit
+      title: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u7DE8\u96C6"
+    }), (0, jsx_runtime_1.jsx)("div", Object.assign({
+      className: "py-12 bg-white"
     }, {
-      children: [(0, jsx_runtime_1.jsxs)("div", {
-        children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
-          forInput: "name",
-          value: "\u8CB8\u4E3B\u540D"
-        }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
-          type: "text",
-          name: "name",
-          value: data.name,
-          className: "mt-1 block w-full",
-          autoComplete: "name",
-          isFocused: true,
-          handleChange: onHandleChange,
-          required: true
-        })]
-      }), (0, jsx_runtime_1.jsxs)("div", Object.assign({
-        className: "mt-4"
+      children: (0, jsx_runtime_1.jsxs)("div", Object.assign({
+        className: "mx-auto sm:px-6 lg:px-8"
       }, {
-        children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
-          forInput: "email",
-          value: "\u8CB8\u4E3B\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"
-        }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
-          type: "email",
-          name: "email",
-          value: data.email,
-          className: "mt-1 block w-full",
-          autoComplete: "username",
-          handleChange: onHandleChange,
-          required: true
-        })]
-      })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
-        className: "mt-4"
-      }, {
-        children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
-          forInput: "lend_money",
-          value: "\u8CA8\u3057\u305F\u91D1\u984D"
-        }), (0, jsx_runtime_1.jsx)(Input_1["default"], {
-          type: "number",
-          name: "lend_money",
-          value: data.lend_money,
-          max: 10000,
-          className: "mt-1 block w-full",
-          handleChange: onHandleChange,
-          required: true
-        })]
-      })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
-        className: "mt-4"
-      }, {
-        children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
-          forInput: "interval",
-          value: "\u53D6\u308A\u7ACB\u3066\u983B\u5EA6"
-        }), (0, jsx_runtime_1.jsx)(SelectBox_1["default"], {
-          name: "interval",
-          options: intervals,
-          value: data.interval,
-          values: props.types,
-          handleChange: onHandleChange
-        })]
-      })), (0, jsx_runtime_1.jsx)("div", Object.assign({
-        className: "flex items-center justify-end mt-4"
-      }, {
-        children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-          className: "ml-4 bg-green-600",
-          processing: processing
+        children: [(0, jsx_runtime_1.jsx)(ValidationErrors_1["default"], {
+          errors: errors
+        }), (0, jsx_runtime_1.jsxs)("form", Object.assign({
+          onSubmit: submit
         }, {
-          children: "\u53D6\u308A\u7ACB\u3066\u308B"
-        }))
-      }))]
+          children: [(0, jsx_runtime_1.jsxs)("div", {
+            children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+              forInput: "name",
+              value: "\u8CB8\u4E3B\u540D"
+            }), (0, jsx_runtime_1.jsx)("span", Object.assign({
+              className: "text-red-600 text-xs"
+            }, {
+              children: "  \u203B\u5FC5\u9808"
+            })), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+              type: "text",
+              name: "name",
+              value: data.name,
+              className: "mt-1 block w-full",
+              autoComplete: "name",
+              isFocused: true,
+              handleChange: onHandleChange,
+              required: true
+            })]
+          }), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+            className: "mt-4"
+          }, {
+            children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+              forInput: "email",
+              value: "\u8CB8\u4E3B\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9"
+            }), (0, jsx_runtime_1.jsx)("span", Object.assign({
+              className: "text-red-600 text-xs"
+            }, {
+              children: " \u203B\u5FC5\u9808"
+            })), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+              type: "email",
+              name: "email",
+              value: data.email,
+              className: "mt-1 block w-full",
+              autoComplete: "username",
+              handleChange: onHandleChange,
+              required: true
+            })]
+          })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+            className: "mt-4"
+          }, {
+            children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+              forInput: "lend_money",
+              value: "\u8CA8\u3057\u305F\u91D1\u984D"
+            }), (0, jsx_runtime_1.jsx)("span", Object.assign({
+              className: "text-red-600 text-xs"
+            }, {
+              children: " \u203B\u5FC5\u9808"
+            })), (0, jsx_runtime_1.jsx)(Input_1["default"], {
+              type: "number",
+              name: "lend_money",
+              value: data.lend_money,
+              max: 10000,
+              className: "mt-1 block w-full",
+              handleChange: onHandleChange,
+              required: true
+            })]
+          })), (0, jsx_runtime_1.jsxs)("div", Object.assign({
+            className: "mt-4"
+          }, {
+            children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
+              forInput: "interval",
+              value: "\u53D6\u308A\u7ACB\u3066\u983B\u5EA6"
+            }), (0, jsx_runtime_1.jsx)(SelectBox_1["default"], {
+              name: "interval",
+              options: intervals,
+              value: data.interval,
+              values: props.types,
+              handleChange: onHandleChange
+            })]
+          })), (0, jsx_runtime_1.jsx)("div", Object.assign({
+            className: "flex items-center justify-end mt-4"
+          }, {
+            children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+              className: "ml-4 bg-green-600",
+              processing: processing
+            }, {
+              children: "\u66F4\u65B0\u3059\u308B"
+            }))
+          }))]
+        }))]
+      }))
     }))]
   }));
 }
@@ -6333,11 +6353,16 @@ function Lent(props) {
       lendMoney: lent.lend_money + "円",
       createdAt: lent.created_at,
       interval: lent.interval + "日毎",
-      editBtn: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
-        className: "m-2 bg-blue-600",
-        processing: false
+      editBtn: (0, jsx_runtime_1.jsx)(inertia_react_1.InertiaLink, Object.assign({
+        href: route('lent.edit', lent.id)
       }, {
-        children: "\u7DE8\u96C6"
+        children: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
+          type: "button",
+          className: "m-2 bg-blue-600",
+          processing: false
+        }, {
+          children: "\u7DE8\u96C6"
+        }))
       })),
       deleteBtn: (0, jsx_runtime_1.jsx)(Button_1["default"], Object.assign({
         className: "m-2 bg-red-600",

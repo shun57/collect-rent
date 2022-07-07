@@ -7,7 +7,7 @@ namespace App\UseCases\Lent;
 use App\Models\User;
 use App\Http\Controllers\Lent\Exceptions\StoreLimitOveredException;
 
-class storeAction
+class StoreAction
 {
     public function __construct()
     {

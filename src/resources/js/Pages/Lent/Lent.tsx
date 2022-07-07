@@ -1,9 +1,11 @@
 import React from 'react';
 import Authenticated from '@/Layouts/Authenticated';
-import { Head, usePage } from '@inertiajs/inertia-react';
+import { Head, usePage, InertiaLink } from '@inertiajs/inertia-react';
 import Table from '@/Components/Table';
 import Button from '@/Components/Button';
 import FlashMessage from '@/Components/FlashMessage';
+
+declare var route;
 
 export default function Lent(props) {
     interface Lent {
@@ -27,7 +29,7 @@ export default function Lent(props) {
             lendMoney: lent.lend_money + "円",
             createdAt: lent.created_at,
             interval: lent.interval + "日毎",
-            editBtn: <Button className="m-2 bg-blue-600" processing={false}>編集</Button>,
+            editBtn: <InertiaLink href={route('lent.edit', lent.id)}><Button type="button" className="m-2 bg-blue-600" processing={false}>編集</Button></InertiaLink>,
             deleteBtn: <Button className="m-2 bg-red-600" processing={false}>回収済</Button>,
         })
     );
