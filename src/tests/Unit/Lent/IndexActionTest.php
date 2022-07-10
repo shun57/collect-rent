@@ -26,7 +26,7 @@ class IndexActionTest extends TestCase
      */
     public function test_ユーザーの貸出リストを取得(): void
     {
-        $lents = Lent::factory()->count(10)->create([
+        $lents = $this->lent->factory()->count(10)->create([
             'user_id' => $this->user->id
         ]);
 
@@ -46,7 +46,7 @@ class IndexActionTest extends TestCase
      */
     public function test_ユーザーの貸出リストを10件のみ取得(): void
     {
-        Lent::factory()->count(11)->create([
+        $this->lent->factory()->count(11)->create([
             'user_id' => $this->user->id
         ]);
     
@@ -64,8 +64,8 @@ class IndexActionTest extends TestCase
 
         $user = 'test';
     
-        $user_lents = new IndexAction($this->lent);
+        $action = new IndexAction($this->lent);
 
-        $user_lents($user)->toArray();
+        $action($user);
     }
 }

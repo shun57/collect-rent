@@ -7,7 +7,7 @@ namespace Tests\Feature\Lent;
 use App\Models\User;
 use Tests\TestCase;
 
-class CreateTest extends TestCase
+class CreateLentTest extends TestCase
 {
     /**
      * @return void

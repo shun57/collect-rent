@@ -6,7 +6,6 @@ namespace App\UseCases\Lent;
 
 use App\Models\User;
 use App\Models\Lent;
-use Illuminate\Database\Eloquent\Collection;
 
 class EditAction
 {

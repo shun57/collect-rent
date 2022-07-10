@@ -7,9 +7,9 @@ namespace Tests\Unit\Lent;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Lent;
-use App\UseCases\Lent\storeAction;
+use App\UseCases\Lent\StoreAction;
 
-class storeActionTest extends TestCase
+class StoreActionTest extends TestCase
 {
     private $user;
 
@@ -31,7 +31,7 @@ class storeActionTest extends TestCase
             'interval' => 1
         ];
 
-        $action = new storeAction();
+        $action = new StoreAction();
         
         $action($this->user, $params);
 
@@ -59,7 +59,7 @@ class storeActionTest extends TestCase
             'interval' => 1
         ];
 
-        $action = new storeAction();
+        $action = new StoreAction();
         
         $action($this->user, $params);
     }
