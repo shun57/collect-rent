@@ -12,9 +12,11 @@ use Psr\Log\LoggerInterface;
 use App\Enums\LentFrequencyType;
 use App\Http\Controllers\Lent\Exceptions\StoreLimitOveredException;
 use App\Http\Requests\Lent\StoreRequest;
+use App\Http\Requests\Lent\UpdateRequest;
 use App\UseCases\Lent\IndexAction;
 use App\UseCases\Lent\StoreAction;
 use App\UseCases\Lent\EditAction;
+use App\UseCases\Lent\UpdateAction;
 use App\Http\Resources\Lent\LentResource;
 
 class LentController extends Controller
@@ -95,5 +97,24 @@ class LentController extends Controller
             'lent' => new LentResource($lent),
             'types' => LentFrequencyType::getValues()
         ]);
+    }
+
+    /**
+     * @param UpdateRequest $request
+     * @param UpdateAction $action
+     * @return void
+     */
+    public function update(UpdateRequest $request, UpdateAction $action)
+    {
+        $params = $request->input();
+
+        try {
+            $action($params);
+        } catch (Throwable $e) {
+            $this->logger->error($e);
+            return redirect()->back()->with('fail', '取り立て情報を更新できませんでした。再度お試しください。');
+        }
+
+        return redirect()->route('lent')->with('success', '取り立て情報を更新しました！');
     }
 }

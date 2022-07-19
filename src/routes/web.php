@@ -21,7 +21,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/create', [LentController::class, 'create'])->name('lent.create');
     Route::post('/store', [LentController::class, 'store'])->name('lent.store');
     Route::get('/edit/{id}', [LentController::class, 'edit'])->name('lent.edit');
-    Route::post('/update/{id}', [LentController::class, 'update'])->name('lent.update');
+    Route::post('/update', [LentController::class, 'update'])->name('lent.update');
 });
 
 require __DIR__.'/auth.php';

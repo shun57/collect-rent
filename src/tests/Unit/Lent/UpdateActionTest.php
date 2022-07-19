@@ -32,13 +32,14 @@ class UpdateActionTest extends TestCase
         $lent = $lent->toArray();
 
         $params = [
+            'id' => $lent[0]['id'],
             'name' => 'テスト太郎2',
             'email' => 'test@test2.com',
             'lend_money' => 1000,
             'interval' => 3
         ];
 
-        $action = new UpdateAction();
+        $action = new UpdateAction($this->lent);
         
         $action($params);
 

@@ -6175,12 +6175,15 @@ var ValidationErrors_1 = __importDefault(__webpack_require__(/*! @/Components/Va
 
 var inertia_react_1 = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
 
+var FlashMessage_1 = __importDefault(__webpack_require__(/*! @/Components/FlashMessage */ "./resources/js/Components/FlashMessage.tsx"));
+
 function EditLent(props) {
   var intervals = props.types.map(function (x) {
     return x + "日間";
   });
 
   var _ref = (0, inertia_react_1.useForm)({
+    id: props.lent.data.id,
     name: props.lent.data.name,
     email: props.lent.data.email,
     lend_money: props.lent.data.lend_money,
@@ -6201,6 +6204,7 @@ function EditLent(props) {
     post(route("lent.update"));
   };
 
+  var flash = (0, inertia_react_1.usePage)().props.flash;
   return (0, jsx_runtime_1.jsxs)(Authenticated_1["default"], Object.assign({
     auth: props.auth,
     header: (0, jsx_runtime_1.jsx)("h2", Object.assign({
@@ -6211,10 +6215,13 @@ function EditLent(props) {
   }, {
     children: [(0, jsx_runtime_1.jsx)(inertia_react_1.Head, {
       title: "\u53D6\u308A\u7ACB\u3066\u60C5\u5831\u7DE8\u96C6"
-    }), (0, jsx_runtime_1.jsx)("div", Object.assign({
+    }), (0, jsx_runtime_1.jsxs)("div", Object.assign({
       className: "py-12 bg-white"
     }, {
-      children: (0, jsx_runtime_1.jsxs)("div", Object.assign({
+      children: [(0, jsx_runtime_1.jsx)(FlashMessage_1["default"], {
+        className: "bg-red-100 border-red-500 text-red-700",
+        message: flash.fail
+      }), (0, jsx_runtime_1.jsxs)("div", Object.assign({
         className: "mx-auto sm:px-6 lg:px-8"
       }, {
         children: [(0, jsx_runtime_1.jsx)(ValidationErrors_1["default"], {
@@ -6222,7 +6229,11 @@ function EditLent(props) {
         }), (0, jsx_runtime_1.jsxs)("form", Object.assign({
           onSubmit: submit
         }, {
-          children: [(0, jsx_runtime_1.jsxs)("div", {
+          children: [(0, jsx_runtime_1.jsx)("input", {
+            type: "hidden",
+            name: "id",
+            value: data.id
+          }), (0, jsx_runtime_1.jsxs)("div", {
             children: [(0, jsx_runtime_1.jsx)(Label_1["default"], {
               forInput: "name",
               value: "\u8CB8\u4E3B\u540D"
@@ -6302,7 +6313,7 @@ function EditLent(props) {
             }))
           }))]
         }))]
-      }))
+      }))]
     }))]
   }));
 }

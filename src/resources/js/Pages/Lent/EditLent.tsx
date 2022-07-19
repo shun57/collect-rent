@@ -6,12 +6,14 @@ import Label from "@/Components/Label";
 import SelectBox from "@/Components/SelectBox";
 import ValidationErrors from "@/Components/ValidationErrors";
 import { Head, useForm, usePage } from "@inertiajs/inertia-react";
+import FlashMessage from '@/Components/FlashMessage';
 
 declare var route;
 
 export default function EditLent(props) {
     const intervals = props.types.map((x) => x + "日間");
     const { data, setData, post, processing, errors } = useForm({
+        id: props.lent.data.id,
         name: props.lent.data.name,
         email: props.lent.data.email,
         lend_money: props.lent.data.lend_money,
@@ -35,6 +37,8 @@ export default function EditLent(props) {
         post(route("lent.update"));
     };
 
+    const { flash } : any = usePage().props
+
     return (
         <Authenticated
             auth={props.auth}
@@ -47,10 +51,16 @@ export default function EditLent(props) {
             <Head title="取り立て情報編集" />
 
             <div className="py-12 bg-white">
+                <FlashMessage className="bg-red-100 border-red-500 text-red-700" message={flash.fail} />
                 <div className="mx-auto sm:px-6 lg:px-8">
                     <ValidationErrors errors={errors} />
 
                     <form onSubmit={submit}>
+                        <input
+                            type="hidden"
+                            name="id"
+                            value={data.id}
+                        />
                         <div>
                             <Label forInput="name" value="貸主名" />
                             <span className="text-red-600 text-xs">  ※必須</span>
