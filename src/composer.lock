@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "718a5f382c3e5b4cadd37200d952e21b",
+    "content-hash": "008dc1f69fb051037121588c1366d905",
     "packages": [
         {
             "name": "bensampo/laravel-enum",
@@ -6929,16 +6929,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.14.4",
+            "version": "v1.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "0e0e51f19c758c79acbda11e3870641fbad5b7d9"
+                "reference": "73030c18b769f27e6f6aacf7848d024fa9a55560"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/0e0e51f19c758c79acbda11e3870641fbad5b7d9",
-                "reference": "0e0e51f19c758c79acbda11e3870641fbad5b7d9",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/73030c18b769f27e6f6aacf7848d024fa9a55560",
+                "reference": "73030c18b769f27e6f6aacf7848d024fa9a55560",
                 "shasum": ""
             },
             "require": {
@@ -6985,7 +6985,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-05-12T12:53:10+00:00"
+            "time": "2022-08-31T16:38:14+00:00"
         },
         {
             "name": "maximebf/debugbar",
